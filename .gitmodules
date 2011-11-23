@@ -1,0 +1,3 @@
+[submodule "slr-scbw"]
+	path = slr-scbw
+	url = git@github.com:kenborge/slr-scbw.git
