@@ -5,3 +5,8 @@
 *.log
 *.out
 *.toc
+*.bbl
+*.blg
+*.sublime-workspace
+*.sublime-project
+*.kilepr
