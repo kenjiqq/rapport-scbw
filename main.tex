@@ -10,13 +10,13 @@
 \usepackage{longtable}
 \usepackage{lscape}
 
-% For the SLR bibliography
-\usepackage{multibib}
-\newcites{SLR}{Literature from the Structured Literature Review}
-
+% Bibliographies
+\usepackage{biblatex}
+\bibliography{slr-scbw/bib/bib}
+\bibliography{bibliography}
 
 % Use UTF-8
-\usepackage[utf8x]{inputenc}
+%\usepackage[utf8x]{inputenc}
 
 \def \authors {Ken Børge Viktil and Martin Tobias Holmedahl Sandsmark}
 \def \papertitle {A cognitive architecture for playing Starcraft: Brood War}
@@ -54,7 +54,6 @@ architectures for artificial intelligence for playing the game.
 \include{4-evaluation}
 \include{a1-slr}
 
-\bibliographystyle{plain}
-\bibliography{bibliography}
+\printbibliography
 
 \end{document}
