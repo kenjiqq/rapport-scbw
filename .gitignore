@@ -10,3 +10,5 @@
 *.sublime-workspace
 *.sublime-project
 *.kilepr
+main-blx.bib
+*.run.xml
