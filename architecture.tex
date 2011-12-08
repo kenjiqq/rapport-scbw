@@ -1,8 +1,20 @@
 \section{Architectures}
+Classical games like chess or tic-tac-toe are usually ``solved'' by AIs using a
+single approach and searching through a single tree of game states, though
+usually by optimizing the search and tree in various ways.
+
+In comparison most approaches to AIs playing real-time strategy games usually
+have to use domain knowledge do further subdivide the problem of playing the
+game, because of the fine-grained simulations involved, and the various levels
+of abstraction that is needed to get a successful AI. And especially when
+approaching the way humans think about a problem more complex architectures
+are needed.
+
 \subsection{Decomposition of problem}
 Michael Buro in his 2003 call for research \cite{buro2003rts} identified six
 important sub-problems in real-time strategy games that he said would be
 interesting for AI research to focus on:
+
 \begin{description}
   \item [Resource management.] To be able to build up an army one needs to gather
     resources, and the balance between gathering resources (by creating workers),
@@ -10,14 +22,63 @@ interesting for AI research to focus on:
     part of the macro/high-level strategy.
   \item [Decision making with uncertainty.] Because of fog of war, there is a
     high degree of uncertainty involved in the decision making. Therefore the AI
-    
-  \item Spatial and temporal reasoning
-  \item Collaboration
-  \item Opponent modelling
+    needs to create hypotheses and act according to them, and should scout to
+    confirm these.
+  \item [Spatial and temporal reasoning.] Analyzing and predicting spatially as
+    well as temporarily. Identifying choke points and predicting outcomes and
+    utilities of actions it takes are some obvious applications.
+  \item [Collaboration.] In most RTSes it is possible for players to ally, and
+    how to share intelligence and coordinate attacks is a challenging problem,
+    though maybe not as interesting yet.
+  \item [Opponent modelling.] Learning from the opponent is an important skill,
+    and exploting the weaknesses of your opponent is an important aspect of
+    human-level playing.
+  \item [Adverserial real-time planning.] Abstracting away micro-level
+    management to allow for more efficient search in the game state-space, and
+    translate the found solutions back, is an important problem to solve.
 \end{description}
 
+A lot of research as been done into AIs for RTSes since this, however, and the
+list might be a bit outdated. For example, one important aspect of most AIs
+today is the micro-management of units, trying to maximize the utility of them 
+(maximizing output of resource gatherers and damage dealt by offensive units,
+for example).
+
+Another important problem that is under-valued by the above list is learning
+from existing knowledge, like learning build-orders from replays of games played
+by humans (or other bots, though the utility of that might not be substantial).
+This can be integrated into several of the items above, for example the decision
+with uncertainty by statistically inferring the most probable states by
+learning from earlier games.
+
+A more general and simplified breakdown of the problem of playing Starcraft can
+be found in Ben Weber's presentation from the AIIDE 2010 StarCraft AI
+Competition:\cite{weber2010aiide}
+
+\begin{description}
+  \item [Managing economy] is the same as the resource management mentioned
+    above, and is about getting a steady income.
+  \item [Expanding the tech tree] to get more powerful and varied units.
+  \item [Producing units] is perhaps one of the most complex parts. This
+    involves both buildings and movable units, defensive and offensive.
+  \item [Attack opponent] usually is not a very explicit action, but can still
+    be pretty complex, since one needs to evaluate its own state against what
+    it knows about the opponent to know when to attack, and where. This point
+    also involves micro-management, which has received a lot of attention from 
+    authors of AIs that have ranked highly.
+\end{description}
+
+Solving all of the aforementioned problems by themselves are what is the focus
+of most research today, but another important problem is tying all of these
+solutions together again. This is perhaps one of the most basic, but important,
+aspects of the architecture. There are several different ways of doing this,
+and some of the most common one is simply sharing a large amount of information
+between sub-units in the architecture (for example a black-board based
+architecture), or simply having a well-defined graph hierarchy where decisions
+are propagated.
+
 \subsection{General architectures}
-\subsubsection{}
+
 \subsection{Cognitive Architectures}
 \paragraph{Global Workspace Theory}
 \paragraph{Cognitive Models in game AIs}
