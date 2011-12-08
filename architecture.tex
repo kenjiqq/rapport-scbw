@@ -77,9 +77,63 @@ between sub-units in the architecture (for example a black-board based
 architecture), or simply having a well-defined graph hierarchy where decisions
 are propagated.
 
-\subsection{General architectures}
+\subsection{Existing architectures}
+
+\subsubsection{Hierarchical architectures}
+Hierarchical architectures rely on one or more levels of subsumption of
+responsibility in a hierarchy of modules to tie together the various partial
+solutions to the sub-problems stated earlier.
+
+\paragraph{BTHAI}
+Two-layered hierarchy of separate sub-modules, separating areas of
+responsibility into macro- and micro-management. The macro-level modules are
+directly responsible for managing the micro-level modules.
+
+\paragraph{BroodwarBotQ}
+Also separates the hierarchy of modules into two levels for micro- and
+macro-level management. Instead of letting any of those layers dictate any of
+the other, however, it has an arbitrator on top of the hierarchy, that meddles
+between the other modules.
+
+\paragraph{Skynet}
+Three-layered architecture, with high-level modules on top, issueing commands
+to the modules in the tactics-level, who in turn dispatch tasks to a task
+manager which hands the tasks of to the appropriate low-level
+(micro-manageing) task handler.
+
+\paragraph{SPAR}
+High-level modules decide which strategies to implement and abstract actions
+are dispatched from the module responsible for tactical decisions, while
+lower-level modules resolve and execute the detailed steps needed for the
+abstract actions.
+
+\subsubsection{Blackboard Architectures}
+Blackboard architectures don't necessarily need a hierarchy of modules, each
+module is responsible for interpreting the data in the shared memory itself,
+and putting back out the results of processing (if any).
+
+\paragraph{Nova}
+It has three sets of modules; a set of micro-management modules for handling
+individual actions, a set of macro-management modules for handling higher-level
+planning, economy and production, and finally a single ``strategy manager''
+module that is responsible for selecting strategies.
 
 \subsection{Cognitive Architectures}
-\paragraph{Global Workspace Theory}
-\paragraph{Cognitive Models in game AIs}
-\cite{Arrabales2009}
+Cognitive architectures are architectures that base themselves on some model of
+human cognition. There are several competing models of cognition, and one of
+the most recent and well-supported is the Global Workspace Theory.
+
+\subsubsection{Global Workspace Theory}
+Global Workspace Theory is based around an understanding of the brain as a set
+of many more or less independent modules, working together by utilizing a
+shared workspace (hence the ``global workspace''), and cycles
+of the various submodules competing for a space in this
+shared workspace.\cite{baars2005gwd}
+
+
+\subsubsection{Cognitive Models in game AIs}
+There have been several more or less successful attempts at implementing models
+of cognition into game-playing agents. CERA-CRANIUM is one of these, which
+intends to implement a pretty general architecture for game-playing GWT-based
+agents. It has already been used to implement a bot that plays Unreal
+Tournament 2004 (a first-person shooter game). \cite{Arrabales2009}
