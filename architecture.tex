@@ -77,42 +77,40 @@ between sub-units in the architecture (for example a black-board based
 architecture), or simply having a well-defined graph hierarchy where decisions
 are propagated.
 
-\subsection{Existing architectures}
-
-\subsubsection{Hierarchical architectures}
+\subsection{Hierarchical architectures}
 Hierarchical architectures rely on one or more levels of subsumption of
 responsibility in a hierarchy of modules to tie together the various partial
 solutions to the sub-problems stated earlier.
 
-\paragraph{BTHAI}
+\subsubsection{BTHAI}
 Two-layered hierarchy of separate sub-modules, separating areas of
 responsibility into macro- and micro-management. The macro-level modules are
 directly responsible for managing the micro-level modules.
 
-\paragraph{BroodwarBotQ}
+\subsubsection{BroodwarBotQ}
 Also separates the hierarchy of modules into two levels for micro- and
 macro-level management. Instead of letting any of those layers dictate any of
 the other, however, it has an arbitrator on top of the hierarchy, that meddles
 between the other modules.
 
-\paragraph{Skynet}
+\subsubsection{Skynet}
 Three-layered architecture, with high-level modules on top, issueing commands
 to the modules in the tactics-level, who in turn dispatch tasks to a task
 manager which hands the tasks of to the appropriate low-level
 (micro-manageing) task handler.
 
-\paragraph{SPAR}
+\subsubsection{SPAR}
 High-level modules decide which strategies to implement and abstract actions
 are dispatched from the module responsible for tactical decisions, while
 lower-level modules resolve and execute the detailed steps needed for the
 abstract actions.
 
-\subsubsection{Blackboard Architectures}
+\subsection{Blackboard Architectures}
 Blackboard architectures don't necessarily need a hierarchy of modules, each
 module is responsible for interpreting the data in the shared memory itself,
 and putting back out the results of processing (if any).
 
-\paragraph{Nova}
+\subsubsection{Nova}
 It has three sets of modules; a set of micro-management modules for handling
 individual actions, a set of macro-management modules for handling higher-level
 planning, economy and production, and finally a single ``strategy manager''
@@ -123,17 +121,86 @@ Cognitive architectures are architectures that base themselves on some model of
 human cognition. There are several competing models of cognition, and one of
 the most recent and well-supported is the Global Workspace Theory.
 
-\subsubsection{Global Workspace Theory}
-Global Workspace Theory is based around an understanding of the brain as a set
-of many more or less independent modules, working together by utilizing a
-shared workspace (hence the ``global workspace''), and cycles
-of the various submodules competing for a space in this
-shared workspace.\cite{baars2005gwd}
+There currently have been no attempts at utilizing cognitive models for playing
+Starcraft: BroodWar.
 
+\subsection{Models of cognition}
+A cognitive model is an approximation of how cognitive processes work. They are
+often used for understanding how humans take decisions, and predict 
 
-\subsubsection{Cognitive Models in game AIs}
+\subsection{Global Workspace Theory}
+
+Global Workspace Theory is a model of cognition that is very well supported
+by experimental data and has been used to implement processes that imitate
+human decision making (for example for solving the problem of assigning
+people to jobs in the US Navy). 
+
+It is based around an understanding of the brain as a set of many more or less
+independent modules, working together by utilizing a shared workspace (hence the
+``global workspace''), and cycles of the various submodules competing for a
+space in this shared workspace.\cite{baars2005gwd}
+
+\subsection{Cognitive Models in game AIs}
 There have been several more or less successful attempts at implementing models
-of cognition into game-playing agents. CERA-CRANIUM is one of these, which
-intends to implement a pretty general architecture for game-playing GWT-based
-agents. It has already been used to implement a bot that plays Unreal
-Tournament 2004 (a first-person shooter game). \cite{Arrabales2009}
+of cognition into game-playing agents. One of the more recent ones is
+CERA-CRANIUM.
+
+
+\subsection{CERA-CRANIUM}
+CERA-CRANIUM intends to implement a general architecture for game-playing
+agents based on various cognitive architectures, and not tied to any specific
+model of cognition. It has already been used to implement a bot that plays
+Unreal Tournament 2004 (a first-person shooter game) using a model based on the
+Global Workspace Theory. \cite{Arrabales2009}
+
+It is based on two major modules:
+\begin{description}
+ \item [CRANIUM] (Cognitive Robotics Architecture Neurologically Inspired
+Underlying Manager) is a tool to create and manage a large amount of
+simultanous processes interacting through a shared workspace.
+ \item [CERA] (Conscious and Emotional Reasoning Architecture)
+ utilizes CRANIUM to create a dynamic control architecture structured in
+layers, based on computational models of consciousness.
+\end{description}
+
+\subsubsection{CRANIUM}
+CRANIUM is basically a software library that can execute thousand of parallel
+but coordinated processes.
+
+\subsubsection{CERA}
+CERA is based around four layers; the sensory-motor services, physical layer,
+mission-specific layer and the core layer, based on the services provided by
+CRANIUM.
+
+The sensory-motor layer is the most basic, and lowest-level layer, which
+provides a uniform interface for sensory input and motoric actuation, physical
+or simulated. Each sensor and motor has a service in this layer.
+
+The physical layer wraps the sensory-motor layer, doing some pre-processing of
+the sensory data, checking that actuator commands are within safety limits,
+etc. It doesn't do semantic information binding, only simple, ``dumb''
+pre-processing, though.
+
+The mission-specific layer processes the data from the physical layer,
+according to the current missions and sub-goals of those missions, as well as
+vital behaviour of the bot (the inherent goals). The strict layering means that
+this layer can be modified indendently of the other layers, to account for
+various needs depending on the assigned tasks, and accounting for functional
+integrity.
+
+The core layer is the highest level, and perform higher cognitive functions,
+and it is this layer that is adjusted to implement various cognitive
+architectures. It has five core modules, however; attention, status assessment,
+preconscious management, memory management and self-coordination. While these
+are defined as core modules in CERA, the modular design means that they can be
+replaced by a custom set.
+
+The physical and mission-specific layers are inspired by cognitive models of
+consciousness, where the various modules compete and collaborate in a shared
+workspace. In CERA there is two workspaces; one for searching for the solution
+to ``what must be the next content of the agent's conscious perception?'' and
+``what must be the next action to execute?''. This differs from traditional AI
+control architectures where one only attempts to find the best solution to the
+second question, and ignoring the first. \cite{Arrabales2009} argues that to
+successfully answer the second question in a human-like fashion, you first need
+to answer the first one.
