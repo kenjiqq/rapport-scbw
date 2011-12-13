@@ -11,7 +11,7 @@ approaching the way humans think about a problem more complex architectures
 are needed.
 
 \subsection{Decomposition of problem}
-Michael Buro in his 2003 call for research \cite{buro2003rts} identified six
+Michael Buro in his 2003 call for research \cite{buro2003real} identified six
 important sub-problems in real-time strategy games that he said would be
 interesting for AI research to focus on:
 
@@ -308,6 +308,7 @@ creates a neural-like environment in which several processes can collaborate
 and work towards a common goal, while CERA structures and controls the
 collaboration in CRANIUM according to the cognitive architecture it models.
 
+\subsubsection{Activation levels}
 Cognitive architectures have a clear distinction betweeen implicit and explicit
 processing\cite{atkinson2000consciousness}, and in CERA-CRANIUM all percepts
 are by default implicit and get processed unconsciously. A specialized
@@ -315,20 +316,71 @@ competition inspired by the pandemonium model mentioned earlier selects the
 conscious focus for explicit reasoning. The pandemonium demons are the
 percepts, behaviours as well as the specialized processors. These are
 constantly assigned an \textit{activation level} by the workspace, based on
-input from the core layer. The activation level is first used to weed out
-percepts with low activation levels (to conserve computational power), and then
-the percepts with the highest values are iteratively processed until one of them
-wins, and is selected as conscious focus. The specialized processors themselves
-are assigned more or less computational power depending on their activation
-level.
+input from the core layer.
 
-The most important factor for the activation level is the contextualization
-criteria, which depends on a $J$-index sent to the workspace from the core
-layer. The closer a percepts own $J$-value is to the current context $J$ from
-the core layer, the higher the activation parameter it gets assigned.
+The activation level is first used to weed out percepts with low activation
+levels (to conserve computational power), and then the percepts with the highest
+values are iteratively processed until one of them wins, and is selected as
+conscious focus.
 
-For specialized processors the activation level is based on what input they can
-process.
+The specialized processors themselves are assigned more or less computational
+power depending on their activation level. For specialized processors the
+activation level is based on what input they can process.
 
-It also uses a mechanism to identify unexpected percepts, which assigns higher
-activation values to percepts that don't match the predicted values.
+At any given time there's also several different behaviours generated, and only
+the ones with the highest activation level will be selected and executed.
+
+\subsubsection{Contextualization}
+The most important factor for the activation level for behaviours and percepts
+is the contextualization criteria, which depends on a $J$-index sent to the
+workspace from the core layer. The closer a behaviour or percepts own $J$-value
+is to the current context $J$ from the core layer, the higher the activation
+parameter it gets assigned. This means that percepts that are close to the
+current context, and probably relevant for the problem at hand, will be more
+likely to get chosen, and that behaviours that are directed at the current
+context focus also will be more likely to be chosen.
+
+Since the contextual bias influences which percepts are created, the perception
+process is a very dynamic and active process, and not just a passive data
+storage system.
+
+\subsubsection{The Match/Mismatch/Novelty mechanism}
+It also uses a mechanism to identify unexpected percepts, expected percepts and
+novel percepts, and assigns higher activation values to these. This mechanism
+was described by Pentti O. Haikonen in his 2007 book ``Robot Brains: Circuits
+and Systems for Conscious Machines''\cite{haikonen2007robotbrains}. As an
+example; a percept that doesn't match the predicted data will generate a
+mismatch percept with an assigned high activation level because it might
+require conscious attention. The core layer can then send a context command
+with the appropriate $J$ context index to the workspaces to focus on the
+unexpected percept.
+
+\subsubsection{Core layer design}
+One of the design goals of CERA-CRANIUM is that the higher cognitive abilities
+should be problem domain independent.\cite{Arrabales2009} This means that the
+core-layer is directed by meta-goals, instead of mission-specific ones. This
+in turn means that different cognitive architectures (as in the models of
+cognition, not software architectures) can be implemented on top of
+CERA-CRANIUM in the core layer without having to change the lower levels. An
+example given by Arrabales of a meta-goal is discovering abstractions, defined
+as detecting an invariant in a variance.
+
+\subsubsection{Goals}
+Looking back at the different types of feedback loops (reflexive, unconscious,
+and conscious), Arrabales identifies three types of goals;
+\textit{basic-goals}, \textit{mission-goals} and \textit{meta-goals}, which are
+achieved by their respective loops. While the basic and mission goals can be
+kept constant for various cognitive architectures, the meta goals are dependent
+on what kind of cognitive architecture the core layer is based on. The core
+layer is therefore suited to model in higher cognitive features like emotions,
+attention and imagination.
+
+As an example, Arrabales implemented a core layer that continously calculates
+a $J$-index and sends it with context commands to the workspaces to direct the
+conscious focus. He relates this to the General Workspace Theory, where the
+contexts generated are the outlines of the metaphorical ``spotlight'', and to
+the Multiple Draft Model, where the core layer is in charge of selecting the
+winning version, defined as the reduced set of percepts. His implementation is
+rule based, where a set of rules takes in percepts and generates a new
+$J$-index. These rules are based on the \textit{meta-goals}, and should
+therefore, as explained earlier, be mission and domain independent.
