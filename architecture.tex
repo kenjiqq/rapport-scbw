@@ -1,3 +1,5 @@
+%!TEX root = main.tex
+
 \section{Architectures}
 Classical games like chess or tic-tac-toe are usually ``solved'' by AIs using a
 single approach and searching through a single tree of game states, though
@@ -83,9 +85,23 @@ responsibility in a hierarchy of modules to tie together the various partial
 solutions to the sub-problems stated earlier.
 
 \subsubsection{BTHAI}
-Two-layered hierarchy of separate sub-modules, separating areas of
-responsibility into macro- and micro-management. The macro-level modules are
-directly responsible for managing the micro-level modules.
+BTHAI utilizes a multi-agent approach to create a system with high levels of modularity. Each unit and building is represented as an agent that extends a more general version of that agent type. So every building is a subclass of a structurAgent, and every unit is a subclass of an unitAgent. These again extend a baseAgent, and this creates a hierarchic structure where agents of a similar type can share logic for behavior and strategy, but supports the option of extending the agent in order to customize and specialize the behavior of that specific agent. 
+
+For higher level tasks with as tactics, exploration and building the bot uses managers. The managers maintains all the agent objects for the different units that the bot controls. Managers also act as an information provider for the agents so they can access data and statistics about the current state of the game. For instance how many units that an attacking force consists of, and how many are defending the base etc. 
+There are also an exploration manager, that handles everything related to exploration, where enemy units have been discovered and predictions about where they will move. A build planer decides what order buildings will be constructed in, and squad commanders handles higher level tactics for a group of units, like attacking or retreating. These managers also have an hierarchic structure, so that they can be extended in order to create a more specialized manager, like a race specific build planer. 
+
+The creation of agent instances are the responsibility of an AgentFactory. This factory makes sure that the correct agent is created for a given unit and that if there exists a specialized agent type for that unit the correct one is created and not a general agent. 
+
+For movement of individual units the bot utilizes a potential field implementation. Agents can decide depending on the situation and the need for precise movements if they want to use the built-in starcraft path-finding or the potential field module. 
+
+Figure \ref{fig:bthaiarch} shows a general overview of the architecture used in BTHAI
+
+\begin{figure}[h!tbp]
+\centering
+\includegraphics[scale=0.8]{graphics/bthai.png}
+\caption{BTHAI general architecture}
+\label{fig:bthaiarch}
+\end{figure}
 
 \subsubsection{BroodwarBotQ}
 Also separates the hierarchy of modules into two levels for micro- and
