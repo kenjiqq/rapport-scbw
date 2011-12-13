@@ -170,7 +170,7 @@ various cognitive architectures, and not tied to any specific model of
 cognition. It has already been used to implement a bot that plays Unreal
 Tournament 2004 (a first-person shooter game) using a model based on the Global
 Workspace Theory, as well as a robot for mapping out an unknown environment.
-\cite{Arrabales2009}
+\cite{arrabales2009ceracranium}
 
 It is based on two major modules:
 \begin{description}
@@ -233,9 +233,9 @@ workspace. In CERA there is two workspaces; one for searching for the solution
 to ``what must be the next content of the agent's conscious perception?'' and
 ``what must be the next action to execute?''. This differs from traditional AI
 control architectures where one only attempts to find the best solution to the
-second question, and ignoring the first. \cite{Arrabales2009} argues that to
-successfully answer the second question in a human-like fashion, you first need
-to answer the first one.
+second question, and ignoring the first. \cite{arrabales2009ceracranium} argues
+that to successfully answer the second question in a human-like fashion, you
+first need to answer the first one.
 
 \subsubsection{Perceptual flow}
 Perceptual flow is bottom-up, going from the physical sensors to the CERA core
@@ -302,17 +302,17 @@ Runtime in that, as well as the Decentralized Software Services, to implement a
 light-weight distributed service-oriented architecture.
 
 \subsubsection{Knowledge representation}
-According to Arrabales\cite{Arrabales2009}, one of the key problems in
-artificial general intelligence is knowledge representation. In CERA-CRANIUM
+According to Arrabales\cite{arrabales2009ceracranium}, one of the key problems
+in artificial general intelligence is knowledge representation. In CERA-CRANIUM
 the knowledge is iteratively processed from the lower levels up to the core
 layer, where lower layers contextualize and correlate input for higher level
 processes. There is for example a proprioception module \footnote{Proprieception
 is the knowledge of relative positions of ones own limbs.} which calculates the
 position of exteroceptive sensors (sensors that observe external stimuli).
-Knowledge is represented internally by geometrical vectors or integer
-variables, referenced by contextual parameters referred to as $J$. Each percept
-is given a $J$-index to define the relevant context it pertains to (for example
-geometric position, or temporal position).
+Knowledge is represented internally by geometrical vectors or integer variables,
+referenced by contextual parameters referred to as $J$. Each percept is given a
+$J$-index to define the relevant context it pertains to (for example geometric
+position, or temporal position).
 
 Handling conflicting and contradictory knowledge (which is very common in not
 fully observable scenarious, with for example error-prone sensors) is given two
@@ -375,13 +375,13 @@ unexpected percept.
 
 \subsubsection{Core layer design}
 One of the design goals of CERA-CRANIUM is that the higher cognitive abilities
-should be problem domain independent.\cite{Arrabales2009} This means that the
-core-layer is directed by meta-goals, instead of mission-specific ones. This
-in turn means that different cognitive architectures (as in the models of
-cognition, not software architectures) can be implemented on top of
-CERA-CRANIUM in the core layer without having to change the lower levels. An
-example given by Arrabales of a meta-goal is discovering abstractions, defined
-as detecting an invariant in a variance.
+should be problem domain independent.\cite{arrabales2009ceracranium} This means
+that the core-layer is directed by meta-goals, instead of mission-specific ones.
+This in turn means that different cognitive architectures (as in the models of
+cognition, not software architectures) can be implemented on top of CERA-CRANIUM
+in the core layer without having to change the lower levels. An example given by
+Arrabales of a meta-goal is discovering abstractions, defined as detecting an
+invariant in a variance.
 
 \subsubsection{Goals}
 Looking back at the different types of feedback loops (reflexive, unconscious,
