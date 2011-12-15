@@ -106,10 +106,18 @@ Figure \ref{fig:bthaiarch} shows a general overview of the architecture used in 
 \end{figure}
 
 \subsubsection{BroodwarBotQ}
-Also separates the hierarchy of modules into two levels for micro- and
-macro-level management. Instead of letting any of those layers dictate any of
-the other, however, it has an arbitrator on top of the hierarchy, that meddles
-between the other modules.
+BroodwarBotQ has taken a more divide-and-conquer approach to the higher levels of macro control then BTHAI. Meaning it has separate agent types for the different tasks that a starcraft game consists of. Worker manager, bases manager, production manager, and construction manager are some of the macro oriented agent types that this bot utilizes. None of the managers controls are orders any of the others around, so the problem of playing starcraft is divided into subtasks that each has a manager that should solve them. But some of the subtasks are not entirely independent, so in order to resolve conflicts between the modules BroodwarBotQ uses a arbitrator. This also acts as a mediator between the macro and micro layers of the architecture. 
+
+For this bot unit control is realized using Bayesian units that strives for completion different goals as ordered by an goal manager.\cite{synnaeve2011bayesian} One of the main goals for the author of BroodwarBotQ was improve the intelligence of starcraft bot, mainly the ability to predict and change strategy based on what the opponent is planing. So achieve this they have estimators that based on data extracted from starcraft replays using Bayesian models, tries to predict what the opponent are doing and planing and tries to adapt its own game play according to countering that. 
+
+% TODO: maybe clear page here if that fits when report is done. 
+
+\begin{figure}[h!tbp]
+\centering
+\includegraphics[scale=0.8]{graphics/bbq.png}
+\caption{BroodwarBotQ general architecture}
+\label{fig:bthaiarch}
+\end{figure}
 
 \subsubsection{Skynet}
 Three-layered architecture, with high-level modules on top, issueing commands
