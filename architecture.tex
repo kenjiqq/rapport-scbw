@@ -79,6 +79,9 @@ between sub-units in the architecture (for example a black-board based
 architecture), or simply having a well-defined graph hierarchy where decisions
 are propagated.
 
+\subsection{Architectures of current state of the art Starcraft AI}
+Each year there are several big AI conferences that run Starcraft AI RTS competitions. The the two biggest are held at the Computational Intelligence in Games conference(CIG)\footnote{\url{ttp://ls11-www.cs.uni-dortmund.de/rts-competition/starcraft-cig2011}} and the AI and interactive digital entertainment conference(AIIDE)\footnote{\url{http://www.starcraftaicompetition.com/}}. Here most the the state of the art bots come together to measure their strength compared to the other bots. Most of the time playing vs a real player is not something that the bots can be very effective, so these competitions becomes the only real way for researchers and developers to test their AIs and get some reasonable feedback on the level of play they are capable of.
+
 \subsubsection{BTHAI}
 BTHAI utilizes a multi-agent approach to create a system with high levels of modularity. Each unit and building is represented as an agent that extends a more general version of that agent type. So every building is a subclass of a structurAgent, and every unit is a subclass of an unitAgent. These again extend a baseAgent, and this creates a hierarchic structure where agents of a similar type can share logic for behavior and strategy, but supports the option of extending the agent in order to customize and specialize the behavior of that specific agent. 
 
@@ -126,8 +129,8 @@ Skynet uses a more hierarchic approach then most of the other bots, where it has
 \label{fig:bthaiarch}
 \end{figure}
 
-\subsubsection{Nova}\cite{pérezmulti}
-Nova has an architecture design that is quite close to BroodwarBotQ, except it uses a blackboard instead of an arbitrator. Nova is designed as a multi-agent system with managers and agents, and was design with that idea that having maximum possible information about the enemy at all times is essential for creating a good AI. Micro management is handled by abstraction, meaning you have a hierarchic system with general agents and the top, like the squad agent that is in charge of controlling an entire squad of units, and more specific agents at the bottom, like the Combat agent that handles fighting for the individual unit on the battlefield. Where as macro is handled with divide-and-conquer where a big problem is divided into smaller individual problems that each have a manager that tries to solve it. 
+\subsubsection{Nova}
+Nova\cite{pérezmulti} has an architecture design that is quite close to BroodwarBotQ, except it uses a blackboard instead of an arbitrator. Nova is designed as a multi-agent system with managers and agents, and was design with that idea that having maximum possible information about the enemy at all times is essential for creating a good AI. Micro management is handled by abstraction, meaning you have a hierarchic system with general agents and the top, like the squad agent that is in charge of controlling an entire squad of units, and more specific agents at the bottom, like the Combat agent that handles fighting for the individual unit on the battlefield. Where as macro is handled with divide-and-conquer where a big problem is divided into smaller individual problems that each have a manager that tries to solve it. 
 
 To achieve the initial goal of maximum information access the bot uses a blackboard for communication. Here all the modules can post data and intentions, and the other modules can then read this data. Anyone can read and write here, and all the information is available to every module that wants it. 
 
