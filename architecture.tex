@@ -120,10 +120,16 @@ For this bot unit control is realized using Bayesian units that strives for comp
 \end{figure}
 
 \subsubsection{Skynet}
-Three-layered architecture, with high-level modules on top, issueing commands
-to the modules in the tactics-level, who in turn dispatch tasks to a task
-manager which hands the tasks of to the appropriate low-level
-(micro-manageing) task handler.
+Skynet uses a more hierarchic approach then most of the other bots, where it has divided its decision making into three different layers. Where higher level modules issuing commands to the lower level modules. The strategy layer at the top manages build order strategies that it gives commands to the tactics layer underneath to execute. The tactics layer contains all the managers that controls all the different aspects of the game, like resource management, scouting and macro management. All this managers outputs tasks that have to be completed and sends them to the task manager in the last layer. In this task layer each of the tasks in the queue will be given to a specific low level module that knows how to execute it. This is the only place where commands are sent from the bot to Starcraft. In addition the bot has a series of situational analysis modules that that continuously analyses the state of the game, and gives input back to the decision making layers when it identifies something that needs focus.
+
+% TODO: maybe clear page here if that fits when report is done. 
+
+\begin{figure}[h!tbp]
+\centering
+\includegraphics[scale=0.8]{graphics/skynet.png}
+\caption{Skynet general architecture}
+\label{fig:bthaiarch}
+\end{figure}
 
 \subsubsection{SPAR}
 High-level modules decide which strategies to implement and abstract actions
