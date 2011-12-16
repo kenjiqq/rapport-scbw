@@ -79,11 +79,6 @@ between sub-units in the architecture (for example a black-board based
 architecture), or simply having a well-defined graph hierarchy where decisions
 are propagated.
 
-\subsection{Hierarchical architectures}
-Hierarchical architectures rely on one or more levels of subsumption of
-responsibility in a hierarchy of modules to tie together the various partial
-solutions to the sub-problems stated earlier.
-
 \subsubsection{BTHAI}
 BTHAI utilizes a multi-agent approach to create a system with high levels of modularity. Each unit and building is represented as an agent that extends a more general version of that agent type. So every building is a subclass of a structurAgent, and every unit is a subclass of an unitAgent. These again extend a baseAgent, and this creates a hierarchic structure where agents of a similar type can share logic for behavior and strategy, but supports the option of extending the agent in order to customize and specialize the behavior of that specific agent. 
 
@@ -131,22 +126,19 @@ Skynet uses a more hierarchic approach then most of the other bots, where it has
 \label{fig:bthaiarch}
 \end{figure}
 
-\subsubsection{SPAR}
-High-level modules decide which strategies to implement and abstract actions
-are dispatched from the module responsible for tactical decisions, while
-lower-level modules resolve and execute the detailed steps needed for the
-abstract actions.
+\subsubsection{Nova}\cite{pérezmulti}
+Nova has an architecture design that is quite close to BroodwarBotQ, except it uses a blackboard instead of an arbitrator. Nova is designed as a multi-agent system with managers and agents, and was design with that idea that having maximum possible information about the enemy at all times is essential for creating a good AI. Micro management is handled by abstraction, meaning you have a hierarchic system with general agents and the top, like the squad agent that is in charge of controlling an entire squad of units, and more specific agents at the bottom, like the Combat agent that handles fighting for the individual unit on the battlefield. Where as macro is handled with divide-and-conquer where a big problem is divided into smaller individual problems that each have a manager that tries to solve it. 
 
-\subsection{Blackboard Architectures}
-Blackboard architectures don't necessarily need a hierarchy of modules, each
-module is responsible for interpreting the data in the shared memory itself,
-and putting back out the results of processing (if any).
+To achieve the initial goal of maximum information access the bot uses a blackboard for communication. Here all the modules can post data and intentions, and the other modules can then read this data. Anyone can read and write here, and all the information is available to every module that wants it. 
 
-\subsubsection{Nova}
-It has three sets of modules; a set of micro-management modules for handling
-individual actions, a set of macro-management modules for handling higher-level
-planning, economy and production, and finally a single ``strategy manager''
-module that is responsible for selecting strategies.
+% TODO: maybe clear page here if that fits when report is done. 
+
+\begin{figure}[h!tbp]
+\centering
+\includegraphics[scale=0.8]{graphics/nova.png}
+\caption{Nova general architecture}
+\label{fig:bthaiarch}
+\end{figure}
 
 \section{Cognitive Architectures}
 Cognitive architectures are architectures that base themselves on some model of
