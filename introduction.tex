@@ -5,10 +5,10 @@
 \section{Background and motivation}
 
 \subsection{The Problem}
-In 2003 Michael Buro published a article where he requested more artificial
+In 2003 Michael Buro published an article where he requested more artificial
 intelligence research in the domain of real-time strategy
 games.\cite{buro2003real} Before this, a lot of research was focused mainly on
-turned based real-time board games, like chess and checkers. And a lot of
+turn based, real-time board games, like chess and checkers. And a lot of
 progress has been done in these fields to the point where they are now able to
 beat top level human players in a real-time match. \cite{campbell2002deep} But
 these games are both deterministic and fully observable, whereas real-time
@@ -17,14 +17,14 @@ observable.
 
 In the wake Buro's call to arms more work has been invested in this area, and
 several platforms for RTS research has been used. One platform that has been
-used a lot is Wargus\cite{wargus}, a Warcraft 2 clone where they created a Lua
-AI scripting language for efficient bot creation. But this game had quite a few
-limitations on individual management of units, so in recent years StarCraft:
-Brood War has been getting a lot more attention as a platform for building game
-AI. Several competitions are held each year where implemented AI solutions can
-compete with each other and measure their performance. But even though a lot has
-happened with the field in recent years, Starcraft AIs still have a far way to
-go before it can measure up to a human player.\cite{eisbotvsfong}.
+used a lot is Wargus\cite{wargus}, a Warcraft 2 clone where they created a
+Lua-based AI scripting language for efficient bot creation. But this game had
+quite a few limitations on individual management of units, so in recent years
+StarCraft: Brood War has been getting a lot more attention as a platform for
+building game AI. Several competitions are held each year where implemented AI
+solutions can compete with each other and measure their performance. But even
+though a lot has happened with the field in recent years, Starcraft AIs still
+have ways to go before it can measure up to a human player.\cite{eisbotvsfong}.
 
 \subsection{StarCraft: Brood War and BWAPI}
 StarCraft is one of the most popular real-time strategy games in the world. It
@@ -39,39 +39,43 @@ maintaining an API, named BWAPI, for creating artificial intelligence modules
 for Brood War. In addition, this API is the basis for several yearly
 competitions where people can submit AI bots that will be pitted against other
 bots to measure their relative performance. This has led to a large number of
-AIs being developed, of various degrees of complexity and novelty, both from
+AIs being developed of various degrees of complexity and novelty, both from
 researchers and hobby developers. 
 
-The Brood War Application Programming Interface (BWAPI) is a open source C++
-framework project that is used for creating AI modules for StarCraft: Brood War.
-The API provides the programmer with information about the game state and the
-individual units, as well as allows them execute actions similar to what a
-normal player would be able to perform. There are a few different ways to create
-the bot, it can be made as an module that gets loaded into StarCraft or as a
-standalone process that communicates with BWAPI through a shared memory area.
+This Brood War Application Programming Interface (BWAPI) is an open source C++
+framework project for creating AI modules for StarCraft: Brood War. The API
+provides the programmer with information about the game state and the individual
+units, as well as allows them execute actions similar to what a normal player
+would be able to perform. There are a two different ways to ``inject'' a bot
+into StarCraft; it can be made as a module that gets loaded into StarCraft or as
+a standalone process that communicates with BWAPI through a shared memory area.
 The API also supports several degrees of accessibility, meaning you can play a
 game as a normal real player would with limited information, or you can start a
-game that is fully observable. The later will be mainly for academic reasons
-where you want to test an AI that requires a fully observable environment.  
+game that is fully observable. The later is mainly of academic interest, where
+you want to test an AI that requires a fully observable environment.  
 
 \subsection{The project}
-In this project we will familiarize ourself with the game starcraft brood war, and what challenges that presents it self when creating a computer system that will play the game. We will identify the different aspects of a starcraft game that are important to solve in order to create a functioning system, and also look at how other researchers have solved these problems in their systems. Ultimately we will select and define an architecture for our system that will have an modular approach in order to support easier collaboration when implementing the system. 
+In this project we will familiarize ourselves with the game StarCraft: Brood
+War, and what challenges that presents when creating a computer program that
+will play the game. We will identify the different aspects of a StarCraft game
+that are important to solve in order to create a functioning system, and also
+look at how other researchers have solved these problems in their systems.
+Ultimately we will select and define an architecture for our system that will
+have an modular approach in order to support easier collaboration when
+implementing the system. 
 
-In order to get a good overview of existing solutions and map the current state of the research into this field, we will perform a structured literature review. This will give us a good overview of the theory behind 
-\begin{itemize}
-\item Identify the most important aspects of a starcraft game
-\item Research existing solution and theories, using a structured literature review
-\item Design an architecture for a modular starcraft playing computer system
-\end{itemize}
+In order to get a good overview of existing solutions and map the current state
+of the research into this field, we will perform a structured literature review.
+This will give us a good overview of the theory behind the state of the art
+when it comes to our research problem.
 
-\subsection{Cognitive architectures}
-One area that haven't been as well explored in relation to RTSes in general and
-StarCraft in particular, is cognitive architectures, or models of cognition.
-There has been some research done into implementing cognitive models for use in
-first-person shooter games, but not into real-time strategy games. It would seem
-intuitive that real-time strategy games, which have been considered a relatively
-hard problem to solve in a human-like fashion, would benefit from using models
-based on our understanding of human cognition.
+So our project is divided into three main parts:
+\begin{enumerate}
+  \item Identify the most important aspects of a StarCraft match.
+  \item Research existing solution and theories, using a structured literature
+review.
+  \item Design an architecture for a modular StarCraft playing computer program.
+\end{enumerate}
 
 \section{Goals and Research Question}
 We want to explore the use of a cognitive architecture for the use in an AI for
@@ -86,12 +90,13 @@ Our research goal is as follows:
 \section{Contributions}
 The following individuals has contributed to the work presented in this report.
 
-\begin{enumerate}
- \item Helge Langseth
- \item Anders Kofod-Petersen
- \item Pauline Haddow
- \item Adam Heinermann
-\end{enumerate}
+\begin{itemize}
+ \item Helge Langseth, supervisor.
+ \item Anders Kofod-Petersen, supervisor.
+ \item Pauline Haddow, supervisor.
+ \item Adam Heinermann, developer of BWAPI, help with setup and pointers for
+information regarding it.
+\end{itemize}
 
 
 \section{Research Method}
