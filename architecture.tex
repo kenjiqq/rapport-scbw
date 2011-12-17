@@ -15,17 +15,12 @@ are needed.
 \subsection{Decomposition of problem}
 Michael Buro in his 2003 call for research \cite{buro2003real} identified six
 important sub-problems in real-time strategy games that he said would be
-interesting for AI research to focus on:
+interesting for AI research to focus on. These problems also dictates how the architecture has to e structured in order to solve them. It is therefor important to have a clear view of what the different main sub-problems are and how they will affect each other.
 
 \begin{description}
-  \item [Resource management.] To be able to build up an army one needs to gather
-    resources, and the balance between gathering resources (by creating workers),
-    building an army and evolving through the technology tree is an important
-    part of the macro/high-level strategy.
-  \item [Decision making with uncertainty.] Because of fog of war, there is a
-    high degree of uncertainty involved in the decision making. Therefore the AI
-    needs to create hypotheses and act according to them, and should scout to
-    confirm these.
+  \item [Resource management.] Resources are what is used to create buildings and units. There are four main things one can spend resources on in starcraft, that is creating new buildings, researching upgrades, expanding to new bases and producing units. In order to be an efficient player one has to find a good balance between all four of these, and perform the right action at the right time. Like allocating more money for units and defenses if one is under attack. Resource management is a big part of the macro play, and making sure to always spend the resources efficient will be very important for any starcraft bot.
+  \item [Decision making with uncertainty.] Because fog of war hides all the parts of the map where the player have no units, there is a
+    high degree of uncertainty involved in the decision making. Scouting Therefore the AI needs to create hypotheses and act according to them, and should scout to confirm these.
   \item [Spatial and temporal reasoning.] Analyzing and predicting spatially as
     well as temporarily. Identifying choke points and predicting outcomes and
     utilities of actions it takes are some obvious applications.
