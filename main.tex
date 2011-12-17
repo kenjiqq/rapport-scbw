@@ -5,16 +5,20 @@
 % Import used packages
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage[margin=2.5cm]{geometry}
 \usepackage{listings}
 \usepackage{longtable}
 \usepackage{lscape}
 \usepackage{parskip}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage[lmargin=25mm,rmargin=25mm,tmargin=25mm,bmargin=30mm]{geometry}
+\usepackage{setspace}
 
 % Bibliographies
 \usepackage{biblatex}
 \bibliography{slr-scbw/bib/bib}
 \bibliography{bibliography}
+\bibliographystyle{plain}
 
 % Use UTF-8
 %\usepackage[utf8x]{inputenc}
@@ -37,10 +41,41 @@ pdfproducer = {pdflatex}}
 \title{\papertitle}
 \author{\authors}
 
+
+
+
 \begin{document}
 
 
-\maketitle
+\begin{titlepage}
+\begin{center}
+\vspace*{2cm}
+\huge{\papertitle}
+
+\vspace{.5cm}
+\large{\authors}
+
+\vspace{12cm}
+\end{center}
+\normalsize
+\begin{table}[!h]
+\begin{tabular}{ll}
+\multirow{4}{*}{\includegraphics[width=20mm]{graphics/logo.png}} & \\
+& Department of Computer and Information Science \\
+& Faculty of Information Technology, Mathematics and Electrical Engineering \\
+& Norwegian University of Science and Technology \\
+\end{tabular}
+\end{table}
+\vspace{.5cm}
+\begin{center}
+\today
+\end{center}
+\end{titlepage}
+\pagenumbering{roman}
+% Insert an empty page
+\newpage
+\thispagestyle{empty}
+\mbox{}
 
 \begin{abstract}
 We present an overview of existing research into the use of cognitive models
@@ -48,14 +83,19 @@ for artificial intelligence, the game Starcraft: Broodwar, and research into
 architectures for artificial intelligence programs for playing the game.
 \end{abstract}
 
+
+\pagenumbering{roman}
 \tableofcontents
 
+\pagenumbering{arabic}
 \include{introduction}
 \include{theory}
 \include{results}
 \include{evaluation}
-%\include{slr}
 
 \printbibliography
+
+\appendix
+\include{slr}
 
 \end{document}
