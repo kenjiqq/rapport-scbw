@@ -15,16 +15,51 @@ are needed.
 \subsection{Decomposition of Problem}
 Michael Buro in his 2003 call for research \cite{buro2003real} identified six
 important sub-problems in real-time strategy games that he said would be
-interesting for AI research to focus on. These problems also dictates how the architecture has to e structured in order to solve them. It is therefor important to have a clear view of what the different main sub-problems are and how they will affect each other.
+interesting for AI research to focus on. The problem subdivision also dictates
+how the architecture has to be structured in order to solve them. It is
+therefore important to have a clear view of what the different main sub-problems
+are and how they will affect eachother.
 
 \begin{description}
-  \item [Resource management.] Resources are what is used to create buildings and units. There are four main things one can spend resources on in starcraft, that is creating new buildings, researching upgrades, expanding to new bases and producing units. In order to be an efficient player one has to find a good balance between all four of these, and perform the right action at the right time. Like allocating more money for units and defenses if one is under attack. Resource management is a big part of the macro play, and making sure to always spend the resources efficient will be very important for any starcraft bot.
-  \item [Decision making with uncertainty.] Because fog of war hides all the parts of the map where the player have no units, there is a
-    high degree of uncertainty involved in the decision making. Scouting then becomes essential, as the more information you can gather about the enemies activities the less uncertainty you have to work with. To deal with uncertainty the AI needs to create hypotheses about the enemies strategies, and then act according to them. It should also scout to confirm these hypotheses.
-  \item [Spatial and temporal reasoning.] Spatial and temporal reasoning is a huge part of any military simulator. Being able to identify important spatial properties as well as the temporal changes is key for playing at a high level. Even though this is important it's one of the areas of RTS research that has had the least progress since Buro's call to arms. Identifying choke points, high and low ground as well as good routs for troop movement are some of the main features that a good AI should look. 
-  \item [Collaboration.] In most RTSes it is possible to play game modes where you are allied with another player to fight against a team of enemies, in these modes how to share intelligence and coordinate attacks is a challenging problem, that has not gotten a lot of focus. Up to this point most research have been focused on one versus one battles, but this is a key problem that will have to get more attention in the future. 
-  \item [Opponent modeling.] Learning from the opponent is an important skill, that most of the current state of the art AIs does with very limited success. A human player one needs a few games before he can identify weaknesses and patterns in the opponents play style. Here todays machine learning methods come up short, and has nowhere near that capability. Exploiting the weaknesses is an important aspect of human-level playing.
-  \item [Adversarial real-time planning.] Abstracting away micro-level management to allow for more efficient search in the game state-space, and translate the found solutions back, is an important problem to solve. Because agents can not afford to think in micro actions or the search space becomes to big to handle in real-time. 
+  \item [Resource management.] Resources are what is used to create buildings
+and units. There are four main things one can spend resources on in starcraft,
+that is creating new buildings, researching upgrades, expanding to new bases and
+producing units. In order to be an efficient player one has to find a good
+balance between all four of these, and perform the right action at the right
+time, like allocating more money for units and defenses if one is under attack.
+Resource management is a big part of the macro play, and making sure to always
+spend the resources efficient will be very important for any StarCraft bot.
+  \item [Decision making with uncertainty.] Because fog of war hides all the
+parts of the map where the player have no units, there is a high degree of
+uncertainty involved in the decision making. Scouting then becomes essential, as
+the more information you can gather about the enemies activities the less
+uncertainty you have to work with. To deal with uncertainty the AI needs to
+create hypotheses about the enemies strategies, and then act according to them.
+It should also scout to confirm these hypotheses.
+  \item [Spatial and temporal reasoning.] Spatial and temporal reasoning is a
+huge part of any game playing agent. Being able to identify important spatial
+properties as well as the temporal changes is key for playing at a high level.
+Even though this is important it's one of the areas of RTS research that has had
+the least progress since Buro's call to arms. Identifying choke points, high and
+low ground as well as good routes for troop movement are some of the main
+features that a good AI should solve efficiently. 
+   \item [Collaboration.] In most RTSes it is possible to play game modes where
+you are allied with another player to fight against a team of enemies, in these
+modes how to share intelligence and coordinate attacks is a challenging problem,
+that has not gotten a lot of focus. Up to this point most research have been
+focused on one versus one battles, but this is a key problem that will have to
+get more attention in the future. 
+  \item [Opponent modeling.] Learning from the opponent is an important skill,
+that most of the current state of the art AIs does with very limited success. A
+human player needs a few games before he can identify weaknesses and
+patterns in the opponents play style. Here todays machine learning methods come
+up short, and has nowhere near that capability. Exploiting the weaknesses is an
+important aspect of human-level playing.
+  \item [Adversarial real-time planning.] Abstracting away micro-level
+management to allow for more efficient search in the game state-space, and
+translate the found solutions back, is an important problem to solve. Because
+agents can not afford to think in micro actions or the search space becomes to
+big to handle in real-time. 
 \end{description}
 
 A lot of research as been done into AIs for RTSes since this, however, and the
@@ -60,20 +95,56 @@ Competition:\cite{weber2010aiide}
 Solving all of the aforementioned problems by themselves are what is the focus
 of most research today, but another important problem is tying all of these
 solutions together again. This is perhaps one of the most basic, but important,
-aspects of the architecture. There are several different ways of doing this,
-and some of the most common one is simply sharing a large amount of information
+aspects of the architecture. There are several different ways of doing this, and
+one of the most common ones is simply sharing a large amount of information
 between sub-units in the architecture (for example a black-board based
-architecture), or simply having a well-defined graph hierarchy where decisions
-are propagated.
+architecture), or having a well-defined graph hierarchy where decisions are
+propagated.
 
 \subsection{Architectures of Current Starcraft Agents}
-Each year there are several big AI conferences that run Starcraft AI RTS competitions. The the two biggest are held at the Computational Intelligence in Games conference(CIG)\footnote{\url{ttp://ls11-www.cs.uni-dortmund.de/rts-competition/starcraft-cig2011}} and the AI and interactive digital entertainment conference(AIIDE)\footnote{\url{http://www.starcraftaicompetition.com/}}. Here most the the state of the art bots come together to measure their strength compared to the other bots. Most of the time playing vs a real player is not something that the bots can be very effective, so these competitions becomes the only real way for researchers and developers to test their AIs and get some reasonable feedback on the level of play they are capable of.
+Each year there are several big AI conferences that run Starcraft AI RTS
+competitions. The the two biggest are held at the Computational Intelligence in
+Games conference (CIG) \footnote{\url{
+http://ls11-www.cs.uni-dortmund.de/rts-competition/starcraft-cig2011}} and the
+AI and interactive digital entertainment conference (AIIDE)
+\footnote{\url{http://www.starcraftaicompetition.com/}}. Here most the the state
+of the art bots come together to measure their strength compared to the other
+bots. Most of the time playing vs a real player is not something that the bots
+can be very effective, so these competitions becomes the only real way for
+researchers and developers to test their AIs and get some reasonable feedback on
+the level of play they are capable of.
+
+Below we review the overall architectures of some of the most interesting and
+highest rated bots from recent competitions. Overmind has in recent years been
+the most well-known and one of the most successful bots in these competitions,
+however there has been no published papers about how it works, and the source
+code to it is not available, we haven't included it here. Since recent
+competitions requires source code to be released, however, it hasn't
+participated recently either.
+
 
 \subsubsection{BTHAI}
-BTHAI utilizes a multi-agent approach to create a system with high levels of modularity. Each unit and building is represented as an agent that extends a more general version of that agent type. So every building is a subclass of a structurAgent, and every unit is a subclass of an unitAgent. These again extend a baseAgent, and this creates a hierarchic structure where agents of a similar type can share logic for behavior and strategy, but supports the option of extending the agent in order to customize and specialize the behavior of that specific agent. 
+BTHAI utilizes a multi-agent approach to create a system with high levels of
+modularity. Each unit and building is represented as an agent that extends a
+more general version of that agent type. So every building is a subclass of a
+structurAgent, and every unit is a subclass of an unitAgent. These again extend
+a baseAgent, and this creates a hierarchic structure where agents of a similar
+type can share logic for behavior and strategy, but supports the option of
+extending the agent in order to customize and specialize the behavior of that
+specific agent. 
 
-For higher level tasks with as tactics, exploration and building the bot uses managers. The managers maintains all the agent objects for the different units that the bot controls. Managers also act as an information provider for the agents so they can access data and statistics about the current state of the game. For instance how many units that an attacking force consists of, and how many are defending the base etc. 
-There are also an exploration manager, that handles everything related to exploration, where enemy units have been discovered and predictions about where they will move. A build planer decides what order buildings will be constructed in, and squad commanders handles higher level tactics for a group of units, like attacking or retreating. These managers also have an hierarchic structure, so that they can be extended in order to create a more specialized manager, like a race specific build planer. 
+For higher level tasks with as tactics, exploration and building the bot uses
+managers. The managers maintains all the agent objects for the different units
+that the bot controls. Managers also act as an information provider for the
+agents so they can access data and statistics about the current state of the
+game, for instance how many units that an attacking force consists of, and how
+many are defending the base etc. There is also an exploration manager that
+handles everything related to exploration, where enemy units have been
+discovered and predictions about where they will move. A build planner decides
+what order buildings will be constructed in, and squad commanders handles higher
+level tactics for a group of units, like attacking or retreating. These managers
+also have an hierarchic structure, so that they can be extended in order to
+create a more specialized manager, like a race specific build planer. 
 
 The creation of agent instances are the responsibility of an AgentFactory. This factory makes sure that the correct agent is created for a given unit and that if there exists a specialized agent type for that unit the correct one is created and not a general agent. 
 
@@ -91,9 +162,26 @@ Figure \ref{fig:bthaiarch} shows a general overview of the architecture used in 
 \end{figure}
 
 \subsubsection{BroodwarBotQ}
-BroodwarBotQ has taken a more divide-and-conquer approach to the higher levels of macro control then BTHAI. Meaning it has separate agent types for the different tasks that a starcraft game consists of. Worker manager, bases manager, production manager, and construction manager are some of the macro oriented agent types that this bot utilizes. None of the managers controls are orders any of the others around, so the problem of playing starcraft is divided into subtasks that each has a manager that should solve them. But some of the subtasks are not entirely independent, so in order to resolve conflicts between the modules BroodwarBotQ uses a arbitrator. This also acts as a mediator between the macro and micro layers of the architecture. 
+BroodwarBotQ has taken a more divide-and-conquer approach to the higher levels
+of macro control then BTHAI, which means it has separate agent types for the
+different tasks that a StarCraft game consists of. Worker manager, bases
+manager, production manager, and construction manager are some of the macro
+oriented agent types that this bot utilizes. None of the managers controls are
+orders any of the others around, so the problem of playing StarCraft is divided
+into subtasks that each has a manager that should solve them. But some of the
+subtasks are not entirely independent, so in order to resolve conflicts between
+the modules BroodwarBotQ uses a arbitrator. This also acts as a mediator between
+the macro and micro layers of the architecture.
 
-For this bot unit control is realized using Bayesian units that strives for completion different goals as ordered by an goal manager.\cite{synnaeve2011bayesian} One of the main goals for the author of BroodwarBotQ was improve the intelligence of starcraft bot, mainly the ability to predict and change strategy based on what the opponent is planing. So achieve this they have estimators that based on data extracted from starcraft replays using Bayesian models, tries to predict what the opponent are doing and planing and tries to adapt its own game play according to countering that. 
+For this bot unit control is realized using Bayesian units\footnote{Bayesian
+unit is the name the authors of BroodwarBotQ has given to agents controlled by
+baysian networks.} that strives for completion different goals as ordered by
+an goal manager.\cite{synnaeve2011bayesian} One of the main goals for the author
+of BroodwarBotQ was improve the intelligence of StarCraft bot, mainly the
+ability to predict and change strategy based on what the opponent is planing. So
+achieve this they have estimators that based on data extracted from StarCraft
+replays using Bayesian models, tries to predict what the opponent are doing and
+planing and tries to adapt its own game play according to countering that. 
 
 % TODO: maybe clear page here if that fits when report is done. 
 
@@ -105,7 +193,19 @@ For this bot unit control is realized using Bayesian units that strives for comp
 \end{figure}
 
 \subsubsection{Skynet}
-Skynet uses a more hierarchic approach then most of the other bots, where it has divided its decision making into three different layers. Where higher level modules issuing commands to the lower level modules. The strategy layer at the top manages build order strategies that it gives commands to the tactics layer underneath to execute. The tactics layer contains all the managers that controls all the different aspects of the game, like resource management, scouting and macro management. All this managers outputs tasks that have to be completed and sends them to the task manager in the last layer. In this task layer each of the tasks in the queue will be given to a specific low level module that knows how to execute it. This is the only place where commands are sent from the bot to Starcraft. In addition the bot has a series of situational analysis modules that that continuously analyses the state of the game, and gives input back to the decision making layers when it identifies something that needs focus.
+Skynet uses a more hierarchic approach then most of the other bots, where it has
+divided its decision making into three different layers. Where higher level
+modules issuing commands to the lower level modules. The strategy layer at the
+top manages build order strategies that it gives commands to the tactics layer
+underneath to execute. The tactics layer contains all the managers that controls
+all the different aspects of the game, like resource management, scouting and
+macro management. These managers outputs tasks that have to be completed and
+sends them to the task manager in the last layer. In this task layer each of the
+tasks in the queue will be given to a specific low level module that knows how
+to execute it. This is the only place where commands are sent from the bot to
+StarCraft. In addition the bot has a series of situational analysis modules that
+that continuously analyses the state of the game, and gives input back to the
+decision making layers when it identifies something that needs focus.
 
 % TODO: maybe clear page here if that fits when report is done. 
 
@@ -117,9 +217,22 @@ Skynet uses a more hierarchic approach then most of the other bots, where it has
 \end{figure}
 
 \subsubsection{Nova}
-Nova\cite{pérezmulti} has an architecture design that is quite close to BroodwarBotQ, except it uses a blackboard instead of an arbitrator. Nova is designed as a multi-agent system with managers and agents, and was design with that idea that having maximum possible information about the enemy at all times is essential for creating a good AI. Micro management is handled by abstraction, meaning you have a hierarchic system with general agents and the top, like the squad agent that is in charge of controlling an entire squad of units, and more specific agents at the bottom, like the Combat agent that handles fighting for the individual unit on the battlefield. Where as macro is handled with divide-and-conquer where a big problem is divided into smaller individual problems that each have a manager that tries to solve it. 
+Nova\cite{pérezmulti} has an architecture design that is quite close to
+BroodwarBotQ, except it uses a blackboard instead of an arbitrator. Nova is
+designed as a multi-agent system with managers and agents, and was design with
+that idea that having maximum possible information about the enemy at all times
+is essential for creating a good AI. Micro management is handled by abstraction,
+meaning you have a hierarchic system with general agents on the top, like the
+squad agent that is in charge of controlling an entire squad of units, and more
+specific agents at the bottom, like the Combat agent that handles fighting for
+the individual unit on the battlefield. Where as macro is handled with
+divide-and-conquer where a big problem is divided into smaller individual
+problems that each have a manager that tries to solve it. 
 
-To achieve the initial goal of maximum information access the bot uses a blackboard for communication. Here all the modules can post data and intentions, and the other modules can then read this data. Anyone can read and write here, and all the information is available to every module that wants it. 
+To achieve the initial goal of maximum information access the bot uses a
+blackboard for communication. Here all the modules can post data and intentions,
+and the other modules can then read this data. Anyone can read and write here,
+and all the information is available to every module that wants it. 
 
 % TODO: maybe clear page here if that fits when report is done. 
 
