@@ -246,3 +246,16 @@ armies and waiting for the enemy before launching a surprise attack. It can even
 be used to gain map control by burrowing units in strategic places to scout that
 area. Only using some form of detector can the enemy see and attack units that
 have burrowed. 
+
+\subsection{BWAPI}
+The Brood War Application Programming Interface (BWAPI) is an open source C++
+framework project for creating AI modules for StarCraft: Brood War. The API
+provides the programmer with information about the game state and the individual
+units, as well as allows them execute actions similar to what a normal player
+would be able to perform. There are a two different ways to ``inject'' a bot
+into StarCraft; it can be made as a module that gets loaded into StarCraft or as
+a standalone process that communicates with BWAPI through a shared memory area.
+The API also supports several degrees of accessibility, meaning you can play a
+game as a normal real player would with limited information, or you can start a
+game that is fully observable. The later is mainly of academic interest, where
+you want to test an AI that requires a fully observable environment.  
