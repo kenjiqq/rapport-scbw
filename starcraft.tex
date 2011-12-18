@@ -248,14 +248,23 @@ area. Only using some form of detector can the enemy see and attack units that
 have burrowed. 
 
 \subsection{BWAPI}
-The Brood War Application Programming Interface (BWAPI) is an open source C++
-framework project for creating AI modules for StarCraft: Brood War. The API
+The Brood War Application Programming Interface (BWAPI)\cite{bwapi} is an open source C++
+framework project for creating AI modules for Starcraft: Brood War. BWAPI is a third party ``hack'' of Starcraft Brood War to allow programmers to retrieve and send information to the game at real-time. The API
 provides the programmer with information about the game state and the individual
 units, as well as allows them execute actions similar to what a normal player
-would be able to perform. There are a two different ways to ``inject'' a bot
-into StarCraft; it can be made as a module that gets loaded into StarCraft or as
-a standalone process that communicates with BWAPI through a shared memory area.
+would be able to perform. 
+
+There are a two different ways to ``inject'' an agent into StarCraft; it can be made as a module that gets loaded into StarCraft or as a standalone process that communicates with BWAPI through a shared memory area, a client-server approach. What method to use depends on several factors, but mainly what language that will be used. Because Starcraft is written in C++ the module that gets ``injected'' have to be in the same language, but the client-server approach enables other languages to be used as the client side is independent and can be written in any language that has a port of BWAPI. This includes several languages such as Java, C\#, Python and F\#.
+
 The API also supports several degrees of accessibility, meaning you can play a
 game as a normal real player would with limited information, or you can start a
 game that is fully observable. The later is mainly of academic interest, where
-you want to test an AI that requires a fully observable environment.  
+you want to test an AI that requires a fully observable environment.
+
+The API provides extensive and detailed information about the game state, basically anything a player can see in a game is also available though the API. Some examples of this are unit locations, production times, available structures, cost of buildings and units. In some cases the API even provides additional information that is not available to a human player in the game, this can be the exact unit speed and the damage and armor of a unit. This is information that a player usually learns outside the game, but for an AI agent it makes it easier for the developer, as a lot of domain knowledge can be retrieved from the API as apposed to having to bundle this in every agent. 
+
+\subsubsection{BWSAL}
+BWAPI Standard Add-on Library (BWSAL)\cite{bwsal} is a project that have created several add-on to the standard BWAPI. The project aims to be a base foundation for creating AI agents with BWAPI. The main parts of the Library are managers that handles a lot of the boiler plate code that is required to get a functional agent with BWAPI. Features like finding available locations where one can construct a building, basic control of units and workers, scouting and build order managers are available. A lot of this code would be quite similar and time consuming to create for each AI agent, so using the add-on library one can much easier get a working agent up and running and the developers can start focusing on their main priorities. 
+
+\subsubsection{BWTA}
+The Brood War Terrain Analyzer (BWTA)\cite{bwta} is another add-on for BWAPI that is used for analyzing the terrain in Starcraft maps. BWTA calculates regions, choke points and base locations on the given map. The calculations are done before the match, and he results can then be accessed and used by the agent as it sees fit.  
