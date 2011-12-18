@@ -38,6 +38,8 @@ processing modules, working together by utilizing a shared workspace (hence the
 processes compete for attention, and a single one gets the
 proverbial spotlight shone upon it.\cite{baars2005gwt}
 
+See figure \ref{fig:gwt} for an overview of the model.
+
 \subsection{Cognitive Models in game AIs}
 There have been several more or less successful attempts at implementing models
 of cognition into game-playing agents. One of the more recent ones is
@@ -48,6 +50,13 @@ providing a more or less realistic simulated environment.
 
 
 \subsection{CERA-CRANIUM}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[scale=1.0]{graphics/ceracranium.png}
+\caption{A schematic of CERA-CRANIUM\cite{arrabales2009ceracranium}}
+\label{fig:ceracranium}
+\end{figure}
+
 CERA-CRANIUM intends to implement a general architecture for agents based on
 various cognitive architectures, and not tied to any specific model of
 cognition. It has already been used to implement a bot that plays Unreal
@@ -64,6 +73,10 @@ simultanous processes interacting through a shared workspace.
  utilizes CRANIUM to create a dynamic control architecture structured in
 layers, based on computational models of consciousness.
 \end{description}
+
+Figure \ref{fig:ceracranium} presents a rough overview of how the architecture
+is structured, and in the following sub sections we will present a more
+detailed look at how it works and how the various parts interoperate.
 
 \subsubsection{CRANIUM}
 CRANIUM is basically a software library that can execute thousand of parallel
