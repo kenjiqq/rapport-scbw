@@ -10,10 +10,9 @@ CERA-CRANIUM model of implementation.
 \subsection{Overview}
 See figure \ref{fig:our-architecture} for a high-level overview of the
 different parts of our architecture. It is highly inspired by the CERA-CRANIUM
-architecture. We have some different naming in our figure to make the distiction
-of the layers to be clearer, and also make the placement of the various
+architecture. We have some different naming in our figure to make the
+distinction of the layers clearer, and also make the placement of the various
 processes clearer.
-
 
 \begin{figure}[h!tb]
 \centering
@@ -54,7 +53,7 @@ full list of event types are as follows:
 \end{itemize}
 From this list we can see that at least the Unit-related events, as well as the
 NukeDetect event, are highly relevant percepts. The rest are more relevant to
-detect game conditions and not directly relevant to the AI.
+detect game conditions and not directly relevant to the agent.
 
 In addition we suggest using the state of each observable unit as a percept.
 This includes position, health and which team it belongs to, as well as the
@@ -88,19 +87,21 @@ and enemy units).
 Processes in this layer are responsible for executing the various kinds of
 behaviours on a relatively high level. This includes the basics of selecting
 what kind of build orders to go for, how to expand through the tech-tree, what
-kinds of units should be grouped together in what squads. Selecting various
-strategies for micro management might also be implemented here (maneuvers or
-special tactics, such has hit-and-runs\footnote{Attacking and immediately
-retreating.}, shoot-and-scoots\footnote{Long-range attacks, and immediately
-moving before enemy forces arrive.}, overwatch\footnote{One group of units
-supporting another group.}, kiting \footnote{Shooting while moving and keeping
-distance, usually against enemy forces with inferior range and speed, allows you
-to attack enemy units while denying counter-attack}, etc.). The responsibility
-of actually executing these moves belongs in the abstraction layer, however.
+kinds of units should be grouped together in what squads, and so forth.
+Selecting various strategies for micro management might also be implemented here
+(maneuvers or special tactics, such has hit-and-runs\footnote{Attacking and
+immediately retreating.}, shoot-and-scoots\footnote{Long-range attacks, and
+immediately moving before enemy forces arrive.}, overwatch\footnote{One group of
+units supporting another group.}, kiting \footnote{Shooting while moving and
+keeping distance, usually against enemy forces with inferior range and speed,
+allows you to attack enemy units while denying counter-attack}, etc.). The
+responsibility of actually executing these moves belongs in the abstraction
+layer, however.
 
 Another important aspect here is assessing threats. Because this cognitive
 approach restricts us to focus on individual parts of the map, we need to make
-sure we aren't oscillating between hot points on the map. One approach to
+sure we aren't oscillating between hot points on the map, while ignoring
+several other important ones who are lower rated. One approach to
 solving this is to mark threats as ``being dealt with'' when we have selected
 and dispatched a response to a threat. This could possibly be integrated into a
 single module in the behaviour layer, ``acknowledge-dispatch''.
@@ -109,8 +110,8 @@ An important process is opponent modelling, or strategy prediction. It can take
 in information about scouted technology and structures, and try to predict what
 the opponent is trying to do, using domain specific knowledge and resource
 constraints, as well as for example learned knowledge from earlier games.
-Mismatches between expected and actual results can be represented as mismatch
-percepts, similar to those used in CERA-CRANIUM for similar purposes.
+Mismatches between expected and actual results from this can be represented as
+mismatch percepts.
 
 \subsubsection{Core layer}
 We propose using a similar rule-based system as described in CERA-CRANIUM for
