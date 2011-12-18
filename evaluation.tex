@@ -1,18 +1,89 @@
 \chapter{Evaluation}
-\section{Summary}
-We have designed an architecture for a computer program that can play the game
-StarCraft: Brood War, based on a cognitive architecture, emulating som of the
-cognitive processes in the human mind.
+\section{Conclusion}
+We have designed a modular architecture for a computer program that can play the
+game StarCraft: Brood War, based on a cognitive architecture, emulating some of
+the cognitive processes in the human mind. This was based on an exploration of
+the problem of playing StarCraft: Brood War, a study of existing agents, and
+also a review of relevant literature.
+
+We have also briefly described some of the modules that would need to be
+implemented in an agent.
+
+\subsection{Evaluation of goals}
+\subsubsection{Identify the most important aspects of a StarCraft match}
+We have described the game play of a StarCraft: Brood War match, and what the
+major problems are for an intelligent agent that wants to play it.
+\subsubsection{Research existing solution and theories, using a structured
+literature review}
+The conclusion of the structured literature review lead to a large amount of
+high-relevancy papers that needed to be read through, which we did, and then
+selected what we thought was relevant to our paper.
+\subsubsection{Design an architecture for a modular StarCraft playing computer
+program}
+Our previously described architecture is an attempt to bridge the domain of
+real-time strategy games, and StarCraft: Brood War in particular, with the
+model of cognitive processing that has been explored earlier.
 
 
-\section{Discussion}
 
+\section{Evaluation}
+Since we haven't implemented and tested the performance of our proposed
+architecture, we have to rely on the testing done by others done in different
+domains for estimating how efficient our agent will be. It is not given that the
+single-focus approach taken by a cognitive architecture will be optimal for
+something that would intuitively seem to require thinking about multiple things
+at the same time. But we believe that the combination of unconscious processes
+and the acknowledge-dispatch approach to handling threats and areas requiring
+attention will lead to the agent being able to efficiently handle multi-pronged
+problems.
 
-\section{Contributions}
-For the structured literature review we collaborated with Magnus Sellereite
-Fjell, Stian Veum M{\o}llersen, Tobias Laupsa Nilsen, J{\o}rgen B{\o}e Svendsen,
-Espen Auran Rathe, Aleksander Lun{\o}e Waage, {\O}ystein Samuelsen, Finn Robin
-K{\aa}veland Hansen, Dag-{\O}yvind Tornes and Jan Eriksson.
+\subsection{Evaluation of the structured literature review}
+A large part of this project has been dedicated to the structured literature
+review, henceforth referred to as the \textit{SLR}. While the SLR process went
+mostly as planned, with few process-specific problems, the results were hugely
+lacking and the process required an extraordinate amount of time.
+
+The key problems we have identified were a lack of experience, lack of
+leadership, lack of domain knowledge and a young domain.
+
+The lack of experience should be fairly obvious, as SLR isn't very commonly
+used in computer science. We were given an article on SLR that described the
+process and need for it, but lack of practical experience among the
+participants was very evident. For example was there disagreements on what
+would constitute valid sources for articles, since a lot of relevant literature
+was not published in peer-reviewed journals. The lack of
+experience with SLR also lead to it taking a long time to concretize the goals
+of the review itself into search terms.
+
+The lack of leadership stemmed from being several, independent groups with
+independent goals (each group is graded individually). This meant that 12
+individuals needed to argue to consensus for all decisions, since noone could
+or would take on a leadership role.
+
+Lack of domain knowledge was because a large part of the group had little to no
+experience with neither the game itself (StarCraft) nor the design of software
+architectures for game-playing agents. This meant that concretizing search
+terms took much longer than needed, and that the search terms had to be
+decided early on, before people had been able to read up on domain knowledge,
+which probably lead to a sub-optimal searching process. This was partially
+reflected in the results, because many of the highly rated articles were mostly
+useless.
+
+Another problematic area is what we briefly touched on earlier, is that much of
+the literature is not published in journals or academically recognized sources.
+This is because StarCraft: Brood War agents is a relatively young area of
+research, and many of the participants are simply programmers who do this for
+fun in their spare time. This means that much of the literature describing the
+state of the art simply doesn't exist, or only exists as blog posts or similar.
+This makes searching for relevant literature hard when one has to stay within
+the relatively strict boundaries defined by the SLR. On the other hand,
+research into cognition is also a relatively young interest field, and the
+amount of recent and valuable literature regarding it is not impossible for a
+single person to sift through, and it would have been more efficient than
+splitting up the work like with the SLR. The evidence for this is that only a
+handful of the relevant papers we based our eventual report on turned up in the
+SLR, and all the relevant papers that turned up in the SLR we were familiar
+with beforehand.
 
 
 \section{Impact}
@@ -28,4 +99,5 @@ specialized processors in each layer, as well as elaborating on the meta-goals
 for the core layer, and implementing a rule set to describe these.
 
 Another important extension would be to more tightly integrate learning into
-the architecture. 
+the architecture. Inspiration for how to do this could possibly be done by
+looking at how it is implemented in the LIDA model\cite{franklin2007lida}.
