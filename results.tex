@@ -1,15 +1,18 @@
 \chapter{Results}
 
 \section{Introduction}
-We chose a cognitive architecture inspired by the CERA-CRANIUM architecture.
+Since we believe that using a cognitive architecture will allow for much
+more human-like agents, which will lead to engaging and interesting gameplay, we
+chose to base our architecture in the global workspace theory, and on the
+CERA-CRANIUM model of implementation.
 
 \section{Architecture}
 \subsection{Overview}
 See figure \ref{fig:our-architecture} for a high-level overview of the
 different parts of our architecture. It is highly inspired by the CERA-CRANIUM
-architecture, but with some different naming to make the distiction of the
-layers to be clearer, and also make the placement of the various processes
-clearer.
+architecture. We have some different naming in our figure to make the distiction
+of the layers to be clearer, and also make the placement of the various
+processes clearer.
 
 
 \begin{figure}[h!tb]
@@ -19,13 +22,12 @@ clearer.
 \label{fig:our-architecture}
 \end{figure}
 
-\subsection{Layers}
-\subsubsection{The Game}
-This is the actual game state, which we interact with through BWAPI. It
-approaches a physical world, although the simulation is not very detailed or
+\subsection{The Game}
+This ``layer'' is the actual game state, which we interact with through BWAPI.
+It approaches a physical world, although the simulation is not very detailed or
 realistic.
 
-\subsubsection{Sensors and controllers}
+\subsection{Sensors and controllers}
 These are what allows us to observe and control the game.
 
 We suggest simply wrapping the Event objects received as sensor percepts. The
@@ -56,7 +58,9 @@ detect game conditions and not directly relevant to the AI.
 
 In addition we suggest using the state of each observable unit as a percept.
 This includes position, health and which team it belongs to, as well as the
-state of any special abilities.
+state of any special abilities. Polling this as well as other information that
+we don't receive information for will have to be done periodically, and then
+one can generate a percept when the value changes noticeably.
 
 Controllers we suggest be at the level of individual units and buildings. There
 will probably have to be specialized controllers for most kinds of units, as
@@ -120,5 +124,3 @@ military power, defenses and offensive tactics.
 If the balance is skewered here it could lead to oscillating behaviour and
 resource starvation for processes that aren't included in the hot spots
 selected by the most active rules.
-
-\subsection{Percepts}
