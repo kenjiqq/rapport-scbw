@@ -11,9 +11,9 @@ currently have been no attempts at utilizing cognitive models for playing
 Starcraft: BroodWar. It would seem intuitive that real-time strategy games,
 which have been considered a relatively hard problem to solve in a human-like
 fashion, would benefit from using models based on our understanding of human
-cognition. It is peculiar that while so much work has been put into making
+cognition. It is also peculiar that while so much work has been put into making
 believable game-playing agents, very little focus has been on reproducing the
-effects of cognitive models.  Arrabales et al argue that this is perhaps
+effects of cognitive models.  Arrabales et al put forth that this is perhaps
 because of poor understanding within the field of classical AI of research into
 cognition\cite{arrabales2009gamechars}.
 
@@ -43,7 +43,7 @@ approaches, for example the LIDA (``Learning IDA'')
 model\cite{franklin2007lida}, or the CERA-CRANIUM
 architecture\cite{arrabales2009ceracranium}.
 
-See figure \ref{fig:gwt} for an overview of the model.
+See figure \ref{fig:gwt} for an overview of the theory.
 
 \subsection{Cognitive Models in game AIs}
 There have been several more or less successful attempts at implementing models
@@ -80,7 +80,7 @@ layers, based on computational models of consciousness.
 \end{description}
 
 Figure \ref{fig:ceracranium} presents a rough overview of how the architecture
-is structured, and in the following sub sections we will present a more
+is structured, and in the following subsections we will present a more
 detailed look at how it works and how the various parts interoperate.
 
 \subsubsection{CRANIUM}
@@ -93,7 +93,9 @@ coordination we see in the brain.\cite{baars2005gwt}
 
 In CRANIUM the various processes/modules are similar to the \textit{demons} in
 Dennett's 1992 paper ``Consciousness Explained'', and CRANIUM itself is similar
-to a \textit{pandemonium}\cite{dennet1992consciousness}.
+to a \textit{pandemonium}.\cite{dennet1992consciousness} In a pandemonium you
+have several ``demons'' which are independent processes competing for conscious
+attention, by seeing who can make the loudest noise, basically.
 
 The way the various processes collaborate on a shared workspace, by subscribing
 to it, then read specific data from it, processing it and finally submitting the
@@ -111,8 +113,8 @@ or simulated. Each sensor and motor has a service in this layer.
 
 The physical layer wraps the sensory-motor layer, doing some pre-processing of
 the sensory data, checking that actuator commands are within safety limits,
-etc. It doesn't do semantic information binding, only simple, ``dumb''
-pre-processing, though.
+etc. It doesn't do semantic information binding, however, only simple
+pre-processing.
 
 The mission-specific layer processes the data from the physical layer,
 according to the current missions and sub-goals of those missions, as well as
@@ -134,9 +136,9 @@ workspace. In CERA there is two workspaces; one for searching for the solution
 to ``what must be the next content of the agent's conscious perception?'' and
 ``what must be the next action to execute?''. This differs from traditional AI
 control architectures where one only attempts to find the best solution to the
-second question, and ignoring the first. \cite{arrabales2009ceracranium} argues
-that to successfully answer the second question in a human-like fashion, you
-first need to answer the first one.
+second question, and ignoring the first. Arrabales et al
+\cite{arrabales2009ceracranium} argues that to successfully answer the second
+question in a human-like fashion, you first need to answer the first one.
 
 \subsubsection{Perceptual flow}
 Perceptual flow is bottom-up, going from the physical sensors to the CERA core
@@ -149,11 +151,11 @@ physical layer who are responsible for noticing relations and contexts between
 individual single percepts. These two types of percepts are both originating
 from processors in the physical layer. From the specialized processors in the
 mission-specific layer we get more abstract and complex percepts, who are also
-more implementation specific. Some of the most important ones are
-\textit{mission percepts}, \textit{complex percepts}, \textit{mismatch
-percepts} and \textit{novelty percepts}, which say something about contexts for
-the current focus of attention, activation, if some sensors input is not
-matching the expected input, and the novelty of certain input.
+more mission/domain specific. Some of the most important ones generated in the
+M-S layer are \textit{mission percepts}, \textit{complex percepts},
+\textit{mismatch percepts} and \textit{novelty percepts}, which say something
+about contexts for the current focus of attention, activation, if some sensors
+input is not matching the expected input, and the novelty of certain input.
 
 Single percepts are published to the physical workspace, while combined, complex
 percepts are published both to the physical workspace as well as the
@@ -195,13 +197,6 @@ action, while loops that go through to the mission-specific layer and the core
 layer respectively are compared to unconsciously performed actions and
 higher-level conscious actions.
 
-\subsubsection{Software architecture}
-This model has a strong requirement on concurrency and asynchronous input and
-output, and the software architecture reflects this. It is based on the
-Microsoft Robotics Developer Studio, and the Concurrency and Coordination
-Runtime in that, as well as the Decentralized Software Services, to implement a
-light-weight distributed service-oriented architecture.
-
 \subsubsection{Knowledge representation}
 According to Arrabales\cite{arrabales2009ceracranium}, one of the key problems
 in artificial general intelligence is knowledge representation. In CERA-CRANIUM
@@ -213,7 +208,7 @@ position of exteroceptive sensors (sensors that observe external stimuli).
 Knowledge is represented internally by geometrical vectors or integer variables,
 referenced by contextual parameters referred to as $J$. Each percept is given a
 $J$-index to define the relevant context it pertains to (for example geometric
-position, or temporal position).
+position and temporal position).
 
 Handling conflicting and contradictory knowledge (which is very common in not
 fully observable scenarious, with for example error-prone sensors) is given two
@@ -225,7 +220,8 @@ The core layer and the other layers are linked by the way which the
 core layer can adjust the parameters by which the workspaces work. CRANIUM
 creates a neural-like environment in which several processes can collaborate
 and work towards a common goal, while CERA structures and controls the
-collaboration in CRANIUM according to the cognitive architecture it models.
+collaboration in CRANIUM workspaces according to the cognitive architecture it
+models.
 
 \subsubsection{Activation levels}
 Cognitive architectures have a clear distinction betweeen implicit and explicit
@@ -252,10 +248,10 @@ the ones with the highest activation level will be selected and executed.
 \subsubsection{Contextualization}
 The most important factor for the activation level for behaviours and percepts
 is the contextualization criteria, which depends on a $J$-index sent to the
-workspace from the core layer. The closer a behaviour or percepts own $J$-value
+workspaces from the core layer. The closer a behaviour or percepts own $J$-value
 is to the current context $J$ from the core layer, the higher the activation
 parameter it gets assigned. This means that percepts that are close to the
-current context, and probably relevant for the problem at hand, will be more
+current context, and probably relevant for the situation at hand, will be more
 likely to get chosen, and that behaviours that are directed at the current
 context focus also will be more likely to be chosen.
 
@@ -271,7 +267,7 @@ and Systems for Conscious Machines''\cite{haikonen2007robotbrains}. As an
 example; a percept that doesn't match the predicted data will generate a
 mismatch percept with an assigned high activation level because it might
 require conscious attention. The core layer can then send a context command
-with the appropriate $J$ context index to the workspaces to focus on the
+with the appropriate $J$ context index to the workspaces to focus around the
 unexpected percept.
 
 \subsubsection{Core layer design}
@@ -289,17 +285,17 @@ Looking back at the different types of feedback loops (reflexive, unconscious,
 and conscious), Arrabales identifies three types of goals;
 \textit{basic-goals}, \textit{mission-goals} and \textit{meta-goals}, which are
 achieved by their respective loops. While the basic and mission goals can be
-kept constant for various cognitive architectures, the meta goals are dependent
-on what kind of cognitive architecture the core layer is based on. The core
+kept constant for various cognitive models, the meta goals are dependent
+on what kind of cognitive model the core layer is based on. The core
 layer is therefore suited to model in higher cognitive features like emotions,
 attention and imagination.
 
-As an example, Arrabales implemented a core layer that continously calculates
-a $J$-index and sends it with context commands to the workspaces to direct the
+As an example, Arrabales implemented a core layer that continously calculates a
+$J$-index and sends it with context commands to the workspaces to direct the
 conscious focus. He relates this to the General Workspace Theory, where the
-contexts generated are the outlines of the metaphorical ``spotlight'', and to
-the Multiple Draft Model, where the core layer is in charge of selecting the
-winning version, defined as the reduced set of percepts. His implementation is
-rule based, where a set of rules takes in percepts and generates a new
-$J$-index. These rules are based on the \textit{meta-goals}, and should
-therefore, as explained earlier, be mission and domain independent.
+contexts generated are the outlines of the metaphorical ``spotlight'' which
+defines the attention of consciousness on the metaphorical
+``stage''.\cite{baars2005gwt} His implementation is rule based, where a set of
+rules takes in percepts and generates a new $J$-index. These rules are based on
+the \textit{meta-goals}, and should therefore, as explained earlier, be mission
+and domain independent.
