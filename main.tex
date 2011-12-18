@@ -11,8 +11,9 @@
 \usepackage{parskip}
 \usepackage{color}
 \usepackage{multirow}
-\usepackage[lmargin=25mm,rmargin=25mm,tmargin=25mm,bmargin=30mm]{geometry}
+\usepackage[lmargin=25mm,rmargin=25mm,tmargin=40mm,bmargin=30mm]{geometry}
 \usepackage{setspace}
+\usepackage{fancyhdr}
 
 % Bibliographies
 \usepackage{biblatex}
@@ -21,7 +22,6 @@
 
 % Use UTF-8
 %\usepackage[utf8x]{inputenc}
-
 \def \authors {Ken B\o{}rge Melhus Viktil and Martin Tobias Holmedahl Sandsmark}
 \def \papertitle {An architecture for an agent playing StarCraft: Brood War}
 
@@ -38,6 +38,8 @@ pdfproducer = {pdflatex}}
 %opening
 \title{\papertitle}
 \author{\authors}
+
+\pagestyle{fancy}
 
 \begin{document}
 
@@ -86,6 +88,10 @@ an established architecture for simulating cognitive models, which has earlier
 been used in robotics and first-person shooter games. Finally we present our own
 architecture for an agent playing StarCraft, inspired by the aforementioned
 cognitive architecture.
+
+This we hope can be used for the final project with the goal of developing an
+agent that can represent the Norwegian University of Technology and Science in
+an international competition against other agents.
 \end{abstract}
 
 
