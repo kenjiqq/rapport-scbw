@@ -39,8 +39,6 @@ pdfproducer = {pdflatex}}
 \title{\papertitle}
 \author{\authors}
 
-\pagestyle{fancy}
-
 \begin{document}
 
 
@@ -73,11 +71,9 @@ pdfproducer = {pdflatex}}
 \today
 \end{center}
 \end{titlepage}
-\pagenumbering{roman}
-% Insert an empty page
-\newpage
+
 \thispagestyle{empty}
-\mbox{}
+\cleardoublepage
 
 \begin{abstract}
 We present an overview of the most important aspect of the game StarCraft as
@@ -93,16 +89,23 @@ This we hope can be used for the final project with the goal of developing an
 agent that can represent the Norwegian University of Technology and Science in
 an international competition against other agents.
 \end{abstract}
-
+\thispagestyle{empty}
+\cleardoublepage
 
 \pagenumbering{roman}
+
 \tableofcontents
-
+\cleardoublepage
 \listoffigures
-
+\cleardoublepage
 %\listoftables
+\thispagestyle{empty}
+\cleardoublepage
 
+
+\pagestyle{fancy}
 \pagenumbering{arabic}
+
 \include{introduction}
 \include{theory}
 \include{results}
