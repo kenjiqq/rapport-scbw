@@ -4,29 +4,39 @@ human cognition. There are several competing models of cognition, and one of
 the most recent and well-supported is the Global Workspace Theory.
 
 One area that haven't been as well explored in relation to RTSes in general and
-StarCraft in particular, is cognitive architectures, or models of cognition.
+StarCraft in particular, is cognitive architectures.
 There has been some research done into implementing cognitive models for use in
 first-person shooter games, but not into real-time strategy games. There
 currently have been no attempts at utilizing cognitive models for playing
 Starcraft: BroodWar. It would seem intuitive that real-time strategy games,
 which have been considered a relatively hard problem to solve in a human-like
 fashion, would benefit from using models based on our understanding of human
-cognition.
-
-\subsection{Models of cognition}
-A cognitive model is an approximation of how cognitive processes work. They are
-often used for understanding how humans take decisions, and predict 
+cognition. It is peculiar that while so much work has been put into making
+believable game-playing agents, very little focus has been on reproducing the
+effects of cognitive models.  Arrabales et al argue that this is perhaps
+because of poor understanding within the field of classical AI of research into
+cognition\cite{arrabales2009gamechars}.
 
 \subsection{Global Workspace Theory}
-Global Workspace Theory is a model of cognition that is very well supported
-by experimental data and has been used to implement processes that imitate
-human decision making (for example for solving the problem of assigning
-people to jobs in the US Navy).\cite{franklin2003interacting}
 
-It is based around an understanding of the brain as a set of many more or less
-independent modules, working together by utilizing a shared workspace (hence the
-``global workspace''), and cycles of the various submodules competing for a
-space in this shared workspace.\cite{baars2005gwt}
+\begin{figure}[h!tb]
+\centering
+\includegraphics[scale=1.0]{graphics/globalworkspace.png}
+\caption{A schematic of the Global Workspace theory\cite{baars2005gwt}}
+\label{fig:gwt}
+\end{figure}
+
+Global Workspace Theory is a model of cognition that is very well supported by
+experimental data, and is one of the most widely accepted
+models.\cite{dehaene2001towards} It has been used to implement processes that
+imitate human decision making (for example for solving the problem of assigning
+people to jobs in the US Navy).\cite{baars2005gwt}\cite{franklin2003interacting}
+
+It is based around an understanding of the brain as a set of many independently
+processing modules, working together by utilizing a shared workspace (hence the
+``global workspace''). Every ``cognitive cycle'' all the
+processes compete for attention, and a single one gets the
+proverbial spotlight shone upon it.\cite{baars2005gwt}
 
 \subsection{Cognitive Models in game AIs}
 There have been several more or less successful attempts at implementing models
@@ -61,7 +71,7 @@ but coordinated processes.
 It is based on the understanding of how the brain works, where specialized
 regions process information both from the senses and from other regions, and
 the connections between these areas enables the emergence of the global
-coordination we see in the brain.\cite{baars2005gwd}
+coordination we see in the brain.\cite{baars2005gwt}
 
 In CRANIUM the various processes/modules are similar to the \textit{demons} in
 Dennett's 1992 paper ``Consciousness Explained'', and CRANIUM itself is similar
