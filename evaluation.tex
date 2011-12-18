@@ -1,41 +1,7 @@
+%!TEX root = main.tex
+
 \chapter{Evaluation}
-\section{Conclusion}
-We have designed a modular architecture for a computer program that can play the
-game StarCraft: Brood War, based on a cognitive architecture, emulating some of
-the cognitive processes in the human mind. This was based on an exploration of
-the problem of playing StarCraft: Brood War, a study of existing agents, and
-also a review of relevant literature.
-
-We have also briefly described some of the modules that would need to be
-implemented in an agent.
-
-\subsection{Evaluation of goals}
-\subsubsection{Identify the most important aspects of a StarCraft match}
-We have described the game play of a StarCraft: Brood War match, and what the
-major problems are for an intelligent agent that wants to play it.
-\subsubsection{Research existing solution and theories, using a structured
-literature review}
-The conclusion of the structured literature review lead to a large amount of
-high-relevancy papers that needed to be read through, which we did, and then
-selected what we thought was relevant to our paper.
-\subsubsection{Design an architecture for a modular StarCraft playing computer
-program}
-Our previously described architecture is an attempt to bridge the domain of
-real-time strategy games, and StarCraft: Brood War in particular, with the
-model of cognitive processing that has been explored earlier.
-
-
-
-\section{Evaluation}
-Since we haven't implemented and tested the performance of our proposed
-architecture, we have to rely on the testing done by others done in different
-domains for estimating how efficient our agent will be. It is not given that the
-single-focus approach taken by a cognitive architecture will be optimal for
-something that would intuitively seem to require thinking about multiple things
-at the same time. But we believe that the combination of unconscious processes
-and the acknowledge-dispatch approach to handling threats and areas requiring
-attention will lead to the agent being able to efficiently handle multi-pronged
-problems.
+In this chapter we conclude our work by looking at the goals defined in the introduction, and evalutes the results. As well as evalutes the structured literature review. Section \ref{sec:futurework} contains our thoughts on future implementation and improvements of our solution.
 
 \subsection{Evaluation of the structured literature review}
 A large part of this project has been dedicated to the structured literature
@@ -84,15 +50,54 @@ handful of the relevant papers we based our eventual report on turned up in the
 SLR, and all the relevant papers that turned up in the SLR we were familiar
 with beforehand.
 
+\section{Conclusion}
+We have designed a modular architecture for a computer program that can play the
+game StarCraft: Brood War, based on a cognitive architecture, emulating some of
+the cognitive processes in the human mind. This was based on an exploration of
+the problem of playing StarCraft: Brood War, a study of existing agents, and
+also a review of relevant literature.
 
-\section{Impact}
+We have also briefly described some of the modules that would need to be
+implemented in an agent.
+
+\subsection{Evaluation of goals}
+\subsubsection{Identify the most important aspects of a StarCraft match}
+We have described the game play of a StarCraft: Brood War match, and what the
+major problems are for an intelligent agent that wants to play it.
+\subsubsection{Research existing solution and theories, using a structured
+literature review}
+The conclusion of the structured literature review lead to a large amount of
+high-relevancy papers that needed to be read through, which we did, and then
+selected what we thought was relevant to our paper.
+\subsubsection{Design an architecture for a modular StarCraft playing computer
+program}
+Our previously described architecture is an attempt to bridge the domain of
+real-time strategy games, and StarCraft: Brood War in particular, with the
+model of cognitive processing that has been explored earlier.
+
+
+\section{Evaluation}
 We believe that using cognitive models is interesting both from a
 game-development perspective, for more realistic and engaging gameplay, as well
 as from a purely academic viewpoint, furthering the understanding of cognitive
 models, and giving researchers yet another environment and domain in which to
 test cognitive models.
 
+Since we haven't implemented and tested the performance of our proposed
+architecture, we have to rely on the testing done by others done in different
+domains for estimating how efficient our agent will be. It is not given that the
+single-focus approach taken by a cognitive architecture will be optimal for
+something that would intuitively seem to require thinking about multiple things
+at the same time. But we believe that the combination of unconscious processes
+and the acknowledge-dispatch approach to handling threats and areas requiring
+attention will lead to the agent being able to efficiently handle multi-pronged
+problems.
+
+\section{Impact}
+
+
 \section{Future work}
+\label{sec:futurework}
 The biggest part remaining is to actually implement this architecture, and see
 if it is viable. This will include more closely detailing the various
 specialized processors in each layer, as well as elaborating on the meta-goals
