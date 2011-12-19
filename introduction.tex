@@ -9,23 +9,24 @@ In 2003 Michael Buro published an article where he requested more artificial
 intelligence research in the domain of real-time strategy
 games.\cite{buro2003real} Before this, a lot of research was focused mainly on
 turn based, real-time board games, like chess and checkers. A lot of
-progress has been done in these fields to the point where they are now able to
-beat top level human players in a real-time match. \cite{campbell2002deep} But
-these games are both deterministic and fully observable, whereas real-time
+progress has been done in these fields to the point where computers are now able
+to beat top level human players in a real-time match. \cite{campbell2002deep}
+But these games are both deterministic and fully observable, whereas real-time
 strategy games usually are only partially deterministic and partially
 observable, which makes for much more interesting problems.
 
 In the wake Buro's call to arms more work has been invested in this area, and
 several platforms for RTS research has been used. One platform that has been
-used a lot is Wargus\cite{wargus}, a clone of Blizzard's Warcraft 2, where they
-created a Lua-based AI scripting language for efficient artificial game-playing
-agent creation. But this game had quite severe limitations on individual
-management of units, so in recent years StarCraft: Brood War has been getting a
-lot more attention as a platform for experimenting with game playing agents.
-Several competitions are held each year where implemented AI agents can
-compete with each other and measure their performance. But even though a lot has
-happened with the field in recent years, StarCraft agents still have ways to go
-before they can measure up to a human player.\cite{eisbotvsfong}.
+used a lot is Wargus\cite{wargus}, a clone of Blizzard's real-time strategy
+game Warcraft 2, where they created a Lua-based AI scripting language for
+efficient artificial game-playing agent creation. But this game has quite severe
+limitations on individual management of units, so in recent years StarCraft:
+Brood War has been getting a lot more attention as a platform for experimenting
+with game playing agents. Several competitions are held each year where
+implemented AI agents can compete with each other and measure their performance.
+But even though a lot has happened with the field in recent years, StarCraft
+agents still have ways to go before they can measure up to a human
+player.\cite{eisbotvsfong}.
 
 Simply winning is however not always the goal, most game-playing artificial
 intelligences are made to be realistic and engaging to compete with, so in many
@@ -58,16 +59,17 @@ bots to measure their relative performance. This has led to a large number of
 AIs being developed of various degrees of complexity and novelty, both from
 researchers and hobby developers. 
 
-\subsection{The project}
+\subsection{The Project}
 \label{sec:project}
 In this project we will familiarize ourselves with the game StarCraft: Brood
 War, and what challenges that presents when creating a computer program that
 will play the game. We will identify the different aspects of a StarCraft game
 that are important to solve in order to create a good game-playing agent, and
 also look at how other researchers have solved these problems in their agents.
-Ultimately we will select and define an architecture for our system that will
-have an modular approach in order to support easier collaboration when
-implementing the system, based on a cognitive model.
+We will also look at cognitive models and architectures that have been
+implemented earlier. Ultimately we will select and define an architecture for
+our system that will have an modular approach in order to support easier
+collaboration when implementing the system, based on a cognitive model.
 
 In order to get a good overview of existing solutions and map the current state
 of the research into this field, we will together with the rest of the StarCraft
@@ -75,8 +77,7 @@ AI group at IDI NTNU\footnote{Department of Computer and Information Science,
 Faculty of Information Technology, Mathematics and Electrical Engineering at the
 Norwegian University of Science and Technology (NTNU) in Trondheim, Norway.}
 perform a structured literature review to gain insight into the theory behind
-the current state of the art
-when it comes to our research problem.
+the current state of the art when it comes to our research problem.
 
 So our project is divided into three main parts:
 \begin{enumerate}
