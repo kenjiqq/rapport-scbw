@@ -13,13 +13,6 @@ architecture. We have some different naming in our figure to make the
 distinction of the layers clearer, and also make the placement of the various
 processes clearer.
 
-\begin{figure}[h!tb]
-\centering
-\includegraphics[scale=1.0]{graphics/our-architecture.png}
-\caption{High-level model of our architecture}
-\label{fig:our-architecture}
-\end{figure}
-
 \subsection{The Game}
 This ``layer'' is the actual game state, which we interact with through BWAPI.
 It approaches a physical world, although the simulation is not very detailed or
@@ -30,6 +23,7 @@ These are what allows us to observe and control the game.
 
 We suggest simply wrapping the Event objects received as sensor percepts. The
 full list of event types are as follows:
+\clearpage
 \begin{multicols}{2}
 \begin{itemize}
     \item MatchStart
@@ -55,6 +49,14 @@ full list of event types are as follows:
 From this list we can see that at least the Unit-related events, as well as the
 NukeDetect event, are highly relevant percepts. The rest are more relevant to
 detect game conditions and not directly relevant to the agent.
+
+\begin{figure}[h!tb]
+\centering
+\includegraphics[scale=0.8]{graphics/our-architecture.png}
+\caption{High-level model of our architecture}
+\label{fig:our-architecture}
+\end{figure}
+
 
 In addition we suggest using the state of each observable unit as a percept.
 This includes position, health and which team it belongs to, as well as the
@@ -107,7 +109,7 @@ solving this is to mark threats as ``being dealt with'' when we have selected
 and dispatched a response to a threat. This could possibly be integrated into a
 single module in the behaviour layer, ``acknowledge-dispatch''.
 
-An important process is opponent modelling, or strategy prediction. It can take
+An important process is opponent modeling, or strategy prediction. It can take
 in information about scouted technology and structures, and try to predict what
 the opponent is trying to do, using domain specific knowledge and resource
 constraints, as well as for example learned knowledge from earlier games.
