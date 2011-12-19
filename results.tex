@@ -1,15 +1,12 @@
 %!TEX root = main.tex
 
 \chapter{Results}
-
-\section{Introduction}
-Since we believe that using a cognitive architecture will allow for much
+We believe that using a cognitive architecture will allow for much
 more human-like agents, which will lead to engaging and interesting gameplay, we
-chose to base our architecture in the global workspace theory, and on the
-CERA-CRANIUM model of implementation.
+chose to base our architecture solution on the global workspace theory, and on the
+CERA-CRANIUM\cite{arrabales2009ceracranium} model of implementation.
 
 \section{Architecture}
-\subsection{Overview}
 See figure \ref{fig:our-architecture} for a high-level overview of the
 different parts of our architecture. It is highly inspired by the CERA-CRANIUM
 architecture. We have some different naming in our figure to make the
@@ -33,6 +30,7 @@ These are what allows us to observe and control the game.
 
 We suggest simply wrapping the Event objects received as sensor percepts. The
 full list of event types are as follows:
+\begin{multicols}{2}
 \begin{itemize}
     \item MatchStart
     \item MatchEnd
@@ -53,6 +51,7 @@ full list of event types are as follows:
     \item SaveGame
     \item None 
 \end{itemize}
+\end{multicols}
 From this list we can see that at least the Unit-related events, as well as the
 NukeDetect event, are highly relevant percepts. The rest are more relevant to
 detect game conditions and not directly relevant to the agent.
