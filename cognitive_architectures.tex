@@ -46,7 +46,7 @@ architecture\cite{arrabales2009ceracranium}.
 
 See figure \ref{fig:gwt} for an overview of the theory.
 
-\subsection{Cognitive Models in game AIs}
+\subsection{Cognitive Models in Game AIs}
 There have been several more or less successful attempts at implementing models
 of cognition into game-playing agents. One of the more recent ones is
 CERA-CRANIUM. One of the reasons for using computer games for experiments wrt.
@@ -141,7 +141,7 @@ second question, and ignoring the first. Arrabales et al
 \cite{arrabales2009ceracranium} argues that to successfully answer the second
 question in a human-like fashion, you first need to answer the first one.
 
-\subsubsection{Perceptual flow}
+\subsubsection{Perceptual Flow}
 Perceptual flow is bottom-up, going from the physical sensors to the CERA core
 layer. There are several types of percepts, depending on the level they are
 produced in. The \textit{single percepts} are singular quantums of perceptions
@@ -169,7 +169,7 @@ core layer. While using a single workspace would be possible, this decoupling
 allows for a more modular and general design, where more of the architecture
 can be re-used for different problems.
 
-\subsubsection{Action flow}
+\subsubsection{Action Flow}
 Action flow is similar to perceptual flow, in that it gets conceptually simpler
 the lower you go, and more complex and abstract further up in towards the core
 layer. The flow is however top-down. From the processes in the mission-specific
@@ -188,7 +188,7 @@ priority.
 The selection of behaviours in the mission-specific layer is in turn controlled
 by the core layer, and by mission goals.
 
-\subsubsection{Feedback loops}
+\subsubsection{Feedback Loops}
 Looking at how percepts flow upwards from the sensory-motor layer, and back
 down again, we can get a concept of \textit{feedback loops}, where different
 kinds of events bounces from different layers in the system.
@@ -198,7 +198,7 @@ action, while loops that go through to the mission-specific layer and the core
 layer respectively are compared to unconsciously performed actions and
 higher-level conscious actions.
 
-\subsubsection{Knowledge representation}
+\subsubsection{Knowledge Representation}
 According to Arrabales\cite{arrabales2009ceracranium}, one of the key problems
 in artificial general intelligence is knowledge representation. In CERA-CRANIUM
 the knowledge is iteratively processed from the lower levels up to the core
@@ -216,7 +216,7 @@ fully observable scenarious, with for example error-prone sensors) is given two
 options; either assigning levels of confidence to the data itself and the
 contextual parameters, or generating complex percepts representing the mismatch.
 
-\subsubsection{Workspace modulation}
+\subsubsection{Workspace Modulation}
 The core layer and the other layers are linked by the way which the
 core layer can adjust the parameters by which the workspaces work. CRANIUM
 creates a neural-like environment in which several processes can collaborate
@@ -224,7 +224,7 @@ and work towards a common goal, while CERA structures and controls the
 collaboration in CRANIUM workspaces according to the cognitive architecture it
 models.
 
-\subsubsection{Activation levels}
+\subsubsection{Activation Levels}
 Cognitive architectures have a clear distinction betweeen implicit and explicit
 processing\cite{atkinson2000consciousness}, and in CERA-CRANIUM all percepts
 are by default implicit and get processed unconsciously. A specialized
@@ -260,7 +260,7 @@ Since the contextual bias influences which percepts are created, the perception
 process is a very dynamic and active process, and not just a passive data
 storage system.
 
-\subsubsection{The Match/Mismatch/Novelty mechanism}
+\subsubsection{The Match/Mismatch/Novelty Mechanism}
 It also uses a mechanism to identify unexpected percepts, expected percepts and
 novel percepts, and assigns higher activation values to these. This mechanism
 was described by Pentti O. Haikonen in his 2007 book ``Robot Brains: Circuits
@@ -271,7 +271,7 @@ require conscious attention. The core layer can then send a context command
 with the appropriate $J$ context index to the workspaces to focus around the
 unexpected percept.
 
-\subsubsection{Core layer design}
+\subsubsection{Core Layer Design}
 One of the design goals of CERA-CRANIUM is that the higher cognitive abilities
 should be problem domain independent.\cite{arrabales2009ceracranium} This means
 that the core-layer is directed by meta-goals, instead of mission-specific ones.

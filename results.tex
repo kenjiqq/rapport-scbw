@@ -25,7 +25,7 @@ This ``layer'' is the actual game state, which we interact with through BWAPI.
 It approaches a physical world, although the simulation is not very detailed or
 realistic.
 
-\subsection{Sensors and controllers}
+\subsection{Sensors and Controllers}
 These are what allows us to observe and control the game.
 
 We suggest simply wrapping the Event objects received as sensor percepts. The
@@ -66,7 +66,7 @@ Controllers we suggest be at the level of individual units and buildings. There
 will probably have to be specialized controllers for most kinds of units, as
 well as for the different kinds of buildings.
 
-\subsubsection{Abstraction layer}
+\subsubsection{Abstraction Layer}
 The processes here are responsible for turning the raw sensor percepts into
 more usable information for the decision making processes higher up, for
 example by doing terrain analysis to be able to detect choke points that need
@@ -84,7 +84,7 @@ armor and without ranged attacks should be in front, for example, while
 vulnerable units with ranged attacks should be further away from ``hot spots''
 and enemy units).
 
-\subsubsection{Behaviour layer}
+\subsubsection{Behaviour Layer}
 Processes in this layer are responsible for executing the various kinds of
 behaviours on a relatively high level. This includes the basics of selecting
 what kind of build orders to go for, how to expand through the tech-tree, what
@@ -114,7 +114,7 @@ constraints, as well as for example learned knowledge from earlier games.
 Mismatches between expected and actual results from this can be represented as
 mismatch percepts.
 
-\subsubsection{Core layer}
+\subsubsection{Core Layer}
 We propose using a similar rule-based system as described in CERA-CRANIUM for
 representing the meta-goals.
 
