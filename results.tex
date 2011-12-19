@@ -6,12 +6,24 @@ more human-like agents, which will lead to engaging and interesting gameplay, we
 chose to base our architecture solution on the global workspace theory, and on the
 CERA-CRANIUM\cite{arrabales2009ceracranium} model of implementation.
 
+In this chapter we give an overview of our proposed solution. Figure
+\ref{fig:our-architecture} presents a high-level schematic of it, while the
+various subsections to \ref{sec:architecture} describes the various layers in
+more detail, as well as present some of the modules that will need to be
+implemented.
+
 \section{Architecture}
+\label{sec:architecture}
 See figure \ref{fig:our-architecture} for a high-level overview of the
 different parts of our architecture. It is highly inspired by the CERA-CRANIUM
 architecture. We have some different naming in our figure to make the
 distinction of the layers clearer, and also make the placement of the various
 processes clearer.
+
+This architecture is highly modular, as most of the specialized processors in
+the various layers are highly independent, and can be developed simultaneously.
+Similarly to CERA-CRANIUM the core layer is independent of the actual game, and
+can be developed in parallel with the game-interfacing code.
 
 \subsection{The Game}
 This ``layer'' is the actual game state, which we interact with through BWAPI.
