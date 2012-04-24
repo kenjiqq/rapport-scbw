@@ -2,118 +2,22 @@
 
 \chapter{Evaluation}
 In this chapter we conclude our work by looking at the goals defined in the
-introduction, and evaluate the results and the structured literature
-review.
-Section \ref{sec:evalslr} evaluates the structured literature review and our experiences with it.
+introduction, and evaluate the results.
 Section \ref{sec:evalres} evaluates the results of the project.
 Section \ref{sec:conclusion} contains the final conclusion for the project and this report. 
 Section \ref{sec:futurework} contains our thoughts on future
 implementation and improvements of our solution.
 
-\section{Evaluation of the Structured Literature Review}
-\label{sec:evalslr}
-A large part of this project has been dedicated to the structured literature
-review, henceforth referred to as the \textit{SLR}. While the SLR process went
-mostly as planned, with few process-specific problems, the results were hugely
-lacking and the process required an extra ordinate amount of time.
-
-The key problems we have identified were a lack of experience, lack of
-leadership, lack of domain knowledge and a young domain.
-
-The lack of experience should be fairly obvious, as SLR isn't very commonly
-used in computer science. We were given an article on SLR that described the
-process and need for it, but lack of practical experience among the
-participants was very evident. There was for example a disagreement on what
-would constitute valid sources for articles, since a lot of relevant literature
-was not published in peer-reviewed journals. The lack of
-experience with SLR also lead to it taking a long time to concretize the goals
-of the review itself into search terms.
-
-The lack of leadership stemmed from being several, independent groups with
-independent goals (each group is graded individually). This meant that 12
-individuals needed to argue to consensus for all decisions, since no one could
-or would take on a leadership role.
-
-Lack of domain knowledge was because a large part of the group had little to no
-experience with neither the game itself (StarCraft) nor the design of software
-architectures for game-playing agents. This meant that concretizing search
-terms took much longer than needed, and that the search terms had to be
-decided early on, before people had been able to read up on domain knowledge,
-which probably lead to a sub-optimal searching process. This was partially
-reflected in the results, because many of the highly rated articles were mostly
-useless.
-
-Another problematic area is what we briefly touched on earlier, is that much of
-the literature is not published in journals or academically recognized sources.
-This is because StarCraft: Brood War agents is a relatively young area of
-research, and many of the participants are simply programmers who do this for
-fun in their spare time. This means that much of the literature describing the
-state of the art simply doesn't exist, or only exists as blog posts or similar.
-This makes searching for relevant literature hard when one has to stay within
-the relatively strict boundaries defined by the SLR. On the other hand,
-research into cognition is also a relatively young interest field, and the
-amount of recent and valuable literature regarding it is not impossible for a
-single person to sift through, and it would have been more efficient than
-splitting up the work like with the SLR. The indication for this is that only a
-handful of the relevant papers we based our eventual report on turned up in the
-SLR, and all the relevant papers that turned up in the SLR we were familiar
-with beforehand.
-
-Appendix \ref{appendix:slrreport} contains the structured literature review.
 
 
 \section{Evaluation of Results}
 \label{sec:evalres}
-We believe that using cognitive models is interesting both from a
-game-development perspective, for more realistic and engaging game-play, as well
-as from a purely academic viewpoint. To our knowledge no one has yet tried
-to apply a cognitive model to the domain of StarCraft, and the structured
-literature review did not turn up any papers that indicated this. But it has
-shown great promise in the domain of for example first person shooters, so more
-research are trial is required before we can tell how well it will really work
-in RTS games.
-
-Since we haven't implemented and tested the performance of our proposed
-architecture, we have to rely on the testing done by others in different domains
-for estimating how efficient our agent will be. It is not given that the
-single-focus approach taken by a cognitive architecture will be optimal for
-something that would intuitively seem to require thinking about multiple things
-at the same time. But we believe that the combination of unconscious processes
-and the acknowledge-dispatch approach to handling threats and areas requiring
-attention will lead to the agent being able to efficiently handle multi-pronged
-problems. It is also the way the human brain functions, so there should not be
-any theoretical problems to the single-focus approach.
+Our implementation exceeded all expectations.
 
 \section{Conclusion}
 \label{sec:conclusion}
-We have described the main mechanics of a StarCraft: Brood War match and what
-the major problems are for an intelligent agent that wants to play it. We have
-also performed a structured literature review to get an overview of relevant
-papers for the domain.
-
-We then designed a modular architecture for a computer program that can play the
-game StarCraft: Brood War, based on a cognitive architecture, emulating some of
-the cognitive processes in the human mind. This was based on an exploration of
-the problem of playing StarCraft: Brood War, a study of existing agents, and
-also a review of relevant literature and earlier research.
-
-We have also briefly described some of the modules that would need to be
-implemented in an agent.
+We believe all future starcraft bots should use a cognitive architecture.
 
 \section{Future Work}
 \label{sec:futurework}
-For future work the main most important thing would be to implement this
-architecture, and test how viable it is. This will include more closely
-detailing the various specialized processors in each layer, as well as
-elaborating on the meta-goals for the core layer, and implementing a rule set to
-describe these. Tweaking the different processors and how they prioritize will
-be very important in order to make the different modules collaborate in a
-sufficient manner.  
-
-Learning is also a really important part of playing any strategy game, both
-learning strategies in general, this can be done from replays or playing many
-games, but also to learn in real-time what the strength and weaknesses of the
-opponent are. So Another important extension would be to more tightly integrate
-learning into the architecture. Inspiration for how to do this could possibly be
-done by looking at how it is implemented in the LIDA
-model\cite{franklin2007lida}.
+Expand on LIDA.\cite{franklin2007lida}.

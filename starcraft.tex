@@ -283,21 +283,12 @@ information that a player usually learns outside the game, but for an AI agent
 it makes it easier for the developer, as a lot of domain knowledge can be
 retrieved from the API as apposed to having to bundle this in every agent. 
 
-\subsubsection{BWSAL}
-BWAPI Standard Add-on Library (BWSAL)\cite{bwsal} is a project that have created
-several add-on to the standard BWAPI. The project aims to be a foundation for
-creating AI agents with BWAPI. The main parts of the Library are managers that
-handles a lot of the boiler plate code that is required to get a functional
-agent with BWAPI. Features like finding available locations where one can
-construct a building, basic control of units and workers, scouting and build
-order managers are available. A lot of this code would be quite similar and time
-consuming to create for each AI agent, so using the add-on library one can much
-easier get a working agent up and running and the developers can start focusing
-on their main priorities. 
+\subsubsection{JNI-BWAPI}
+Utilizes JNI and shared memory.
 
 \subsubsection{BWTA}
 The Brood War Terrain Analyzer (BWTA)\cite{bwta} is another add-on for BWAPI
 that is used for analyzing the terrain in StarCraft maps. BWTA calculates
 regions, choke points and base locations on the given map. The calculations are
 done before the match, and the results can then be accessed and used by the
-agent as it sees fit.  
+agent as it sees fit.
